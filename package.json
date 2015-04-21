@@ -10,10 +10,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^1.8.8",
     "webpack-dev-server": "^1.8.2"
   },
   "dependencies": {
+    "webpack": "^1.8.8",
     "jsx-loader": "^0.13.1"
   }
 }
