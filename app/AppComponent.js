@@ -58,17 +58,28 @@ var Dashboard = React.createClass({
 });
 
 var Groups = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.func
+  },
+
   render: function() {
     return (
-      <Row>
-        <Col xs={12} md={8}>
-          <Group />
-        </Col>
-        <Col xs={12} md={4}>
-          <ListGroupItemLink to="group" params={{groupId: 1}}>Group 1</ListGroupItemLink>
-          <ListGroupItemLink to="group" params={{groupId: 2}}>Group 2</ListGroupItemLink>
-        </Col>
-      </Row>
+      <div>
+        { this.context.router.getCurrentParams().groupId && <Group/> || <GroupsList/> }
+      </div>
+    );
+  }
+});
+
+var GroupsList = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <ListGroupItemLink to="group" params={{groupId: 1}}>Group 1</ListGroupItemLink>
+        <ListGroupItemLink to="group" params={{groupId: 2}}>Group 2</ListGroupItemLink>
+        <ListGroupItemLink to="group" params={{groupId: 3}}>Group 3</ListGroupItemLink>
+        <ListGroupItemLink to="group" params={{groupId: 4}}>Group 4</ListGroupItemLink>
+      </div>
     );
   }
 });
@@ -80,7 +91,14 @@ var Group = React.createClass({
 
   render: function() {
     return (
-      <div>Group id: {this.context.router.getCurrentParams().groupId}</div>
+      <Row>
+        <Col md={8}>
+          <h1>Group {this.context.router.getCurrentParams().groupId}</h1>
+          <p>(Details)</p>
+        </Col>
+        <Col md={4}><GroupsList /></Col>
+      </Row>
+
     );
   }
 });
