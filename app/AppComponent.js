@@ -75,7 +75,8 @@ var GroupsList = React.createClass({
     return (
       <div>
         { groupIds.map(function(groupId){
-          return <ListGroupItemLink to="group" params={{groupId: groupId}}>Group {groupId}</ListGroupItemLink>
+          var headerText = "Group " + groupId;
+          return <ListGroupItemLink to="group" params={{groupId: groupId}} header={headerText}>description</ListGroupItemLink>
         })}
       </div>
     );
