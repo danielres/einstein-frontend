@@ -47,8 +47,13 @@ var MainNavBar = React.createClass({
      <Navbar>
       <Nav>
         <NavItemLink key={1} to="dashboard">Dashboard</NavItemLink>
-        <NavItemLink key={2} to="inbox">Inbox</NavItemLink>
-        <NavItemLink key={3} to="groups">Groups</NavItemLink>
+        <NavItemLink key={3} to="groups">My Groups</NavItemLink>
+        <NavItemLink key={4} to="placeholder" disabled>Fastnews</NavItemLink>
+        <NavItemLink key={5} to="inbox">Inbox</NavItemLink>
+        <NavItemLink key={6} to="placeholder" disabled>Open courses</NavItemLink>
+        <NavItemLink key={7} to="placeholder" disabled>Network</NavItemLink>
+        <NavItemLink key={8} to="placeholder" disabled>Uniworld</NavItemLink>
+        <NavItemLink key={9} to="placeholder" disabled>My profile</NavItemLink>
       </Nav>
     </Navbar>
     );
