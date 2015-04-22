@@ -10,6 +10,7 @@ var Router = require('react-router')
 var ReactBootstrap = require('react-bootstrap')
   , Nav       = ReactBootstrap.Nav
   , Navbar = ReactBootstrap.Navbar
+  , CollapsableNav = ReactBootstrap.CollapsableNav
   , ListGroup = ReactBootstrap.ListGroup;
 
 // GRID
@@ -20,11 +21,16 @@ var ReactBootstrap = require('react-bootstrap')
 
 // MISC
 var ReactBootstrap = require('react-bootstrap')
-  , PageHeader = ReactBootstrap.PageHeader;
+  , Glyphicon  = ReactBootstrap.Glyphicon
+  , PageHeader = ReactBootstrap.PageHeader
+  , Button     = ReactBootstrap.Button
+  , DropdownButton     = ReactBootstrap.DropdownButton
+  , MenuItem    = ReactBootstrap.MenuItem;
 
 // NAV
 var ReactRouterBootstrap = require('react-router-bootstrap')
   , NavItemLink       = ReactRouterBootstrap.NavItemLink
+  , MenuItemLink     = ReactRouterBootstrap.MenuItemLink
   , ListGroupItemLink = ReactRouterBootstrap.ListGroupItemLink;
 
 // -------------
@@ -33,8 +39,8 @@ var App = React.createClass({
   render: function() {
     return (
       <Grid>
-        <MainNavBar />
-        <RouteHandler />
+        <Row><Col><MainNavBar /></Col></Row>
+        <Row><Col><RouteHandler /></Col></Row>
       </Grid>
     );
   }
@@ -44,18 +50,28 @@ var App = React.createClass({
 var MainNavBar = React.createClass({
   render: function() {
     return(
-     <Navbar>
-      <Nav>
-        <NavItemLink key={1} to="dashboard">Dashboard</NavItemLink>
-        <NavItemLink key={3} to="groups">My Groups</NavItemLink>
-        <NavItemLink key={4} to="placeholder" disabled>Fastnews</NavItemLink>
-        <NavItemLink key={5} to="inbox">Inbox</NavItemLink>
-        <NavItemLink key={6} to="placeholder" disabled>Open courses</NavItemLink>
-        <NavItemLink key={7} to="placeholder" disabled>Network</NavItemLink>
-        <NavItemLink key={8} to="placeholder" disabled>Uniworld</NavItemLink>
-        <NavItemLink key={9} to="placeholder" disabled>My profile</NavItemLink>
-      </Nav>
-    </Navbar>
+      <Navbar toggleNavKey={0}>
+        <CollapsableNav eventKey={0}>
+          <Nav navbar>
+            <NavItemLink key={1} to="dashboard">Dashboard</NavItemLink>
+            <NavItemLink key={3} to="groups">My Groups</NavItemLink>
+            <NavItemLink key={4} to="fast_news" disabled>Fastnews</NavItemLink>
+            <NavItemLink key={5} to="inbox">Inbox</NavItemLink>
+            <NavItemLink key={6} to="open_courses" disabled>Open courses</NavItemLink>
+            <NavItemLink key={7} to="network" disabled>Network</NavItemLink>
+            <NavItemLink key={8} to="uniworld" disabled>Uniworld</NavItemLink>
+          </Nav>
+          <Nav navbar right>
+            <DropdownButton eventKey={3} title={<Glyphicon glyph='user' />}>
+              <MenuItemLink to="profile" disabled>My profile</MenuItemLink>
+              <MenuItemLink to="settings" disabled>Settings</MenuItemLink>
+              <MenuItem divider />
+              <MenuItemLink to="logout" disabled>Logout</MenuItemLink>
+            </DropdownButton>
+          </Nav>
+        </CollapsableNav>
+      </Navbar>
+
     );
   }
 });
@@ -122,19 +138,25 @@ var Inbox = React.createClass({
 
 var Placeholder = React.createClass({
   render: function() {
-    return <div>IN  CONSTRUCTION</div>;
+    return(<div>IN  CONSTRUCTION</div>);
   }
 });
 
 var routes = (
   <Route handler={App} path="/">
-    <Route name="dashboard" path="dashboard" handler={Dashboard} />
-    <Route name="inbox" path="inbox" handler={Inbox} />
-    <Route name="placeholder" path="placeholder" handler={Placeholder} />
-    <Route name="groups" path="groups" handler={Groups}>
-      <Route name="group" path="/group/:groupId" handler={Group} />
+    <DefaultRoute              handler={Dashboard} />
+    <Route name="dashboard"    handler={Dashboard}    path="dashboard" />
+    <Route name="inbox"        handler={Inbox}        path="inbox" />
+    <Route name="groups"       handler={Groups}       path="groups">
+      <Route name="group"      handler={Group}        path=":groupId" />
     </Route>
-    <DefaultRoute handler={Dashboard} />
+    <Route name="fast_news"    handler={Placeholder}  path="fast_news" />
+    <Route name="open_courses" handler={Placeholder}  path="open_courses" />
+    <Route name="network"      handler={Placeholder}  path="network" />
+    <Route name="uniworld"     handler={Placeholder}  path="uniworld" />
+    <Route name="profile"      handler={Placeholder}  path="profile" />
+    <Route name="settings"     handler={Placeholder}  path="settings" />
+    <Route name="logout"       handler={Placeholder}  path="logout" />
   </Route>
 );
 
