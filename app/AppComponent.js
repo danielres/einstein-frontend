@@ -61,12 +61,10 @@ var Groups = React.createClass({
   contextTypes: {
     router: React.PropTypes.func
   },
-
   render: function() {
+    var groupId = this.context.router.getCurrentParams().groupId;
     return (
-      <div>
-        { this.context.router.getCurrentParams().groupId && <Group/> || <GroupsList/> }
-      </div>
+      <div>{ groupId && <Group groupId={groupId} /> || <GroupsList/> }</div>
     );
   }
 });
@@ -93,7 +91,7 @@ var Group = React.createClass({
     return (
       <Row>
         <Col md={8}>
-          <h1>Group {this.context.router.getCurrentParams().groupId}</h1>
+          <h1>Group {this.props.groupId}</h1>
           <p>(Details)</p>
         </Col>
         <Col md={4}><GroupsList /></Col>
