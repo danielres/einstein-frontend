@@ -18,6 +18,10 @@ var ReactBootstrap = require('react-bootstrap')
   , Row  = ReactBootstrap.Row
   , Col  = ReactBootstrap.Col;
 
+// MISC
+var ReactBootstrap = require('react-bootstrap')
+  , PageHeader = ReactBootstrap.PageHeader;
+
 // NAV
 var ReactRouterBootstrap = require('react-router-bootstrap')
   , NavItemLink       = ReactRouterBootstrap.NavItemLink
@@ -98,7 +102,7 @@ var Group = React.createClass({
   render: function() {
     return (
       <div>
-        <h1>Group {this.props.groupId}</h1>
+        <PageHeader>Group {this.props.groupId} <small>description</small></PageHeader>
         <p>(Details)</p>
       </div>
     );
