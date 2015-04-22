@@ -102,13 +102,27 @@ var Groups = React.createClass({
 });
 
 var GroupsList = React.createClass({
+  getInitialState: function() {
+    return {
+      groups: []
+    };
+  },
+
+  componentDidMount: function() {
+    $.get("/groups.json", function(result) {
+      if (this.isMounted()) {
+        this.setState({groups: result});
+      }
+    }.bind(this));
+  },
+
   render: function() {
-    var groupIds = [1,2,3,4,5,6,7,8];
+    var groups = this.state.groups;
     return (
       <div>
-        { groupIds.map(function(groupId){
-          var headerText = "Group " + groupId;
-          return <ListGroupItemLink to="group" params={{groupId: groupId}} header={headerText}>description</ListGroupItemLink>
+        { groups.map(function(group){
+          var headerText = "Group " + group.id;
+          return <ListGroupItemLink to="group" params={{groupId: group.id}} header={headerText}>description</ListGroupItemLink>
         })}
       </div>
     );
