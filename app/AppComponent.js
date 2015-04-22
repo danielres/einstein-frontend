@@ -115,10 +115,17 @@ var Inbox = React.createClass({
   }
 });
 
+var Placeholder = React.createClass({
+  render: function() {
+    return <div>IN  CONSTRUCTION</div>;
+  }
+});
+
 var routes = (
   <Route handler={App} path="/">
     <Route name="dashboard" path="dashboard" handler={Dashboard} />
     <Route name="inbox" path="inbox" handler={Inbox} />
+    <Route name="placeholder" path="placeholder" handler={Placeholder} />
     <Route name="groups" path="groups" handler={Groups}>
       <Route name="group" path="/group/:groupId" handler={Group} />
     </Route>
