@@ -71,12 +71,12 @@ var Groups = React.createClass({
 
 var GroupsList = React.createClass({
   render: function() {
+    var groupIds = [1,2,3,4,5,6,7,8];
     return (
       <div>
-        <ListGroupItemLink to="group" params={{groupId: 1}}>Group 1</ListGroupItemLink>
-        <ListGroupItemLink to="group" params={{groupId: 2}}>Group 2</ListGroupItemLink>
-        <ListGroupItemLink to="group" params={{groupId: 3}}>Group 3</ListGroupItemLink>
-        <ListGroupItemLink to="group" params={{groupId: 4}}>Group 4</ListGroupItemLink>
+        { groupIds.map(function(groupId){
+          return <ListGroupItemLink to="group" params={{groupId: groupId}}>Group {groupId}</ListGroupItemLink>
+        })}
       </div>
     );
   }
