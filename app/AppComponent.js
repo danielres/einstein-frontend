@@ -109,7 +109,7 @@ var GroupsList = React.createClass({
   },
 
   componentDidMount: function() {
-    $.get("/groups.json", function(result) {
+    $.get("//localhost:3000/groups", function(result) {
       if (this.isMounted()) {
         this.setState({groups: result});
       }
