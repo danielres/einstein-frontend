@@ -1,4 +1,5 @@
 var React = require('react');
+var request = require('superagent');
 
 // ROUTER
 var Router = require('react-router')
@@ -109,11 +110,15 @@ var GroupsList = React.createClass({
   },
 
   componentDidMount: function() {
-    $.get("//localhost:3000/groups", function(result) {
-      if (this.isMounted()) {
-        this.setState({groups: result});
-      }
-    }.bind(this));
+    request
+      .get("//localhost:3000/groups")
+      .end(
+        function(err,res){
+          if(this.isMounted()){
+            this.setState({groups: res.body});
+          }
+        }.bind(this)
+      );
   },
 
   render: function() {
