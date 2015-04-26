@@ -1,5 +1,5 @@
 var React = require('react');
-var request = require('superagent');
+var Reflux = require('reflux');
 
 // ROUTER
 var Router = require('react-router')
@@ -33,6 +33,11 @@ var ReactRouterBootstrap = require('react-router-bootstrap')
   , NavItemLink       = ReactRouterBootstrap.NavItemLink
   , MenuItemLink     = ReactRouterBootstrap.MenuItemLink
   , ListGroupItemLink = ReactRouterBootstrap.ListGroupItemLink;
+
+// GROUPS
+var GroupsActions = require('./groups_actions');
+var GroupsStore   = require('./groups_store');
+
 
 // -------------
 
@@ -103,35 +108,22 @@ var Groups = React.createClass({
 });
 
 var GroupsList = React.createClass({
-  getInitialState: function() {
-    return {
-      groups: []
-    };
-  },
+    mixins: [Reflux.connect(GroupsStore, "list")],
+    componentDidMount: function () {
+        GroupsActions.load();
+    },
+    render: function () {
+        var groups = this.state.list;
+        return (
+            <div>
+              { groups.map(function(group){
+                var headerText = "Group " + group.id;
+                return <ListGroupItemLink to="group" params={{groupId: group.id}} header={headerText}>description</ListGroupItemLink>
+              })}
 
-  componentDidMount: function() {
-    request
-      .get("//localhost:3000/groups")
-      .end(
-        function(err,res){
-          if(this.isMounted()){
-            this.setState({groups: res.body});
-          }
-        }.bind(this)
-      );
-  },
-
-  render: function() {
-    var groups = this.state.groups;
-    return (
-      <div>
-        { groups.map(function(group){
-          var headerText = "Group " + group.id;
-          return <ListGroupItemLink to="group" params={{groupId: group.id}} header={headerText}>description</ListGroupItemLink>
-        })}
-      </div>
-    );
-  }
+            </div>
+        );
+    }
 });
 
 var Group = React.createClass({
