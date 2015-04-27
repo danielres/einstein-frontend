@@ -1,13 +1,14 @@
 'use strict';
 
-var GROUPS_URL = 'http://localhost:3000/groups';
+var Reflux  = require('reflux')
+var request = require('superagent')
 
-var Reflux  = require('reflux');
-var request = require('superagent');
+var GroupsActions = require('./actions')
 
-var GroupsActions = require('./groups_actions');
+var GROUPS_URL = 'http://localhost:3000/groups'
 
-var GroupsStore = Reflux.createStore({
+
+module.exports = Reflux.createStore({
 
   listenables: [GroupsActions],
 
@@ -30,4 +31,3 @@ var GroupsStore = Reflux.createStore({
 
 });
 
-module.exports = GroupsStore;
