@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node_modules/.bin/mocha --compilers .:tests/support/compiler.js tests/*test.js",
     "dev": "npm run dev-server & npm run api-faker",
     "dev-server": "./node_modules/.bin/webpack-dev-server --devtool eval --progress --colors --content-base build",
     "api-faker": "./node_modules/.bin/json-server api/faker.js"
@@ -13,8 +13,11 @@
   "license": "ISC",
   "devDependencies": {
     "faker": "^2.1.2",
+    "jsdom": "^3.1.2",
     "json-server": "^0.7.1",
     "lodash": "^3.7.0",
+    "mocha": "^2.2.4",
+    "react-tools": "^0.13.2",
     "reflux": "^0.2.7",
     "webpack-dev-server": "^1.8.2"
   },
