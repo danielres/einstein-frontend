@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "npm run dev-server & npm run api-faker",
     "dev-server": "./node_modules/.bin/webpack-dev-server --devtool eval --progress --colors --content-base build",
     "api-faker": "./node_modules/.bin/json-server api/faker.js"
@@ -13,8 +13,10 @@
   "license": "ISC",
   "devDependencies": {
     "faker": "^2.1.2",
+    "jest-cli": "^0.4.0",
     "json-server": "^0.7.1",
     "lodash": "^3.7.0",
+    "react-tools": "^0.13.2",
     "reflux": "^0.2.7",
     "webpack-dev-server": "^1.8.2"
   },
@@ -27,5 +29,11 @@
     "react-router-bootstrap": "^0.13.0",
     "superagent": "^1.2.0",
     "webpack": "^1.8.8"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
   }
 }
