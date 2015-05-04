@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha --compilers .:tests/support/compiler.js tests/*test.js",
+    "test": "node_modules/.bin/mocha --watch --compilers .:tests/support/compiler.js tests/*test.js",
     "dev": "npm run dev-server & npm run api-faker",
     "dev-server": "./node_modules/.bin/webpack-dev-server --devtool eval --progress --colors --content-base build",
     "api-faker": "./node_modules/.bin/json-server api/faker.js"
@@ -28,6 +28,7 @@
     "react-bootstrap": "^0.21.0",
     "react-router": "^0.13.2",
     "react-router-bootstrap": "^0.13.0",
+    "react-intl": "1.2.0",
     "superagent": "^1.2.0",
     "webpack": "^1.8.8"
   }
