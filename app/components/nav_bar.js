@@ -37,38 +37,38 @@ var NavBar = React.createClass({
         <B.CollapsableNav eventKey={0}>
           <B.Nav navbar>
             <RB.NavItemLink key={1} to="dashboard">
-              { this.getIntlMessage('dashboard') }
+              <FormattedMessage message={ this.getIntlMessage('dashboard') } />
             </RB.NavItemLink>
             <RB.NavItemLink key={3} to="groups">
-              { this.getIntlMessage('groups') }
+              <FormattedMessage message={ this.getIntlMessage('groups') } />
             </RB.NavItemLink>
             <RB.NavItemLink key={4} to="fast_news" disabled>
-              { this.getIntlMessage('news') }
+              <FormattedMessage message={ this.getIntlMessage('news') } />
             </RB.NavItemLink>
             <RB.NavItemLink key={5} to="inbox">
-              { this.getIntlMessage('inbox') }
+              <FormattedMessage message={ this.getIntlMessage('inbox') } />
             </RB.NavItemLink>
             <RB.NavItemLink key={6} to="open_courses" disabled>
-              { this.getIntlMessage('open_courses') }
+              <FormattedMessage message={ this.getIntlMessage('open_courses') } />
             </RB.NavItemLink>
             <RB.NavItemLink key={7} to="network" disabled>
-              { this.getIntlMessage('network') }
+              <FormattedMessage message={ this.getIntlMessage('network') } />
             </RB.NavItemLink>
             <RB.NavItemLink key={8} to="uniworld" disabled>
-              { this.getIntlMessage('uniworld') }
+              <FormattedMessage message={ this.getIntlMessage('uniworld') } />
             </RB.NavItemLink>
           </B.Nav>
           <B.Nav navbar right>
             <B.DropdownButton eventKey={3} title={<B.Glyphicon glyph='user' />}>
               <RB.MenuItemLink to="profile"  disabled>
-              { this.getIntlMessage('profile') }
+                <FormattedMessage message={ this.getIntlMessage('profile') } />
               </RB.MenuItemLink>
               <RB.MenuItemLink to="settings" disabled>
-              { this.getIntlMessage('settings') }
+                <FormattedMessage message={ this.getIntlMessage('settings') } />
               </RB.MenuItemLink>
               <B.MenuItem divider />
-              <RB.MenuItemLink to="logout"   disabled>
-              { this.getIntlMessage('logout') }
+              <RB.MenuItemLink to="logout" disabled>
+                <FormattedMessage message={ this.getIntlMessage('logout') } />
               </RB.MenuItemLink>
             </B.DropdownButton>
           </B.Nav>
