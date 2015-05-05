@@ -5,6 +5,7 @@ var React = require('react')
 var B  = require('react-bootstrap')
 var RB = require('react-router-bootstrap')
 
+var Intl              = require('intl')
 var ReactIntl         = require('react-intl');
 var IntlMixin         = ReactIntl.IntlMixin;
 var FormattedMessage  = ReactIntl.FormattedMessage;
