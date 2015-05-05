@@ -51,6 +51,6 @@ var routes = (
 );
 
 
-Router.run(routes, function (Handler) {
+module.exports = Router.run(routes, Router.HistoryLocation, function (Handler) {
   React.render(<Handler/>, document.body);
 });
