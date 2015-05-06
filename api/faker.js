@@ -1,6 +1,21 @@
+var _ = require("lodash");
+var faker = require("faker");
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+function fakePeople(amount) {
+    return _.times(amount, function (n) {
+                    return {
+                        id: n,
+                        name: faker.name.findName(),
+                        avatar: faker.internet.avatar()
+                    }
+                })
+};
+
 module.exports = function(){
-    var faker = require("faker");
-    var _ = require("lodash");
     return {
         people: _.times(100, function (n) {
             return {
@@ -10,10 +25,10 @@ module.exports = function(){
             }
         }),
         groups: _.times(8, function (n) {
-            var i = n + 1
             return {
-                id: i,
-                name: "Group number" + i
+                id: n,
+                name: "Group number " + (n + 1),
+                members: fakePeople(getRandomInt(3,23))
             }
         })
 
