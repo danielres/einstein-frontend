@@ -3,8 +3,15 @@
 var React = require('react')
 
 
-module.exports = React.createClass({
+var Person = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.func
+  },
   render: function() {
-    return <div>PERSON</div>;
+    var personId = this.context.router.getCurrentParams().personId;
+    return <div>PERSON{ personId }</div>;
   }
 });
+
+
+module.exports = Person;
