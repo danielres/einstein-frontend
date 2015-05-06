@@ -14,6 +14,7 @@ var Dashboard   = require('./components/dashboard')
 var Placeholder = require('./components/placeholder')
 var Inbox       = require('./components/inbox')
 var Groups      = require('./components/groups')
+var Person      = require('./components/person')
 
 
 var App = React.createClass({
@@ -47,10 +48,11 @@ var routes = (
     <Route name="profile"      handler={Placeholder}  path="profile" />
     <Route name="settings"     handler={Placeholder}  path="settings" />
     <Route name="logout"       handler={Placeholder}  path="logout" />
+    <Route name="person"       handler={Person}       path="person" />
   </Route>
 );
 
 
-module.exports = Router.run(routes, Router.HistoryLocation, function (Handler) {
+module.exports = Router.run(routes, function (Handler) {
   React.render(<Handler/>, document.body);
 });
