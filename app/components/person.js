@@ -6,6 +6,7 @@ var Reflux = require('reflux')
 var PersonActions = require('./person/actions')
 var PersonStore   = require('./person/store')
 
+var B  = require('react-bootstrap')
 
 var Person = React.createClass({
   mixins: [Reflux.connect(PersonStore, "item")],
@@ -20,7 +21,7 @@ var Person = React.createClass({
     var p = this.state.item;
     return(
       <div>
-        <h1>{ p.name }</h1>
+        <B.PageHeader>{p.name} <small>description</small></B.PageHeader>
         <div>
           <img src={p.avatar} className="img-circle" alt={p.name + ' avatar'} title={p.name} />
         </div>
