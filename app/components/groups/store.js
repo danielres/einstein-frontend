@@ -1,11 +1,9 @@
 'use strict';
 
 var Reflux  = require('reflux')
-var request = require('superagent')
-
 var GroupsActions = require('./actions')
 
-var GROUPS_URL = 'http://localhost:3000/groups'
+var ApiHelper = require('./../helpers/api_helper.js')
 
 
 module.exports = Reflux.createStore({
@@ -22,11 +20,7 @@ module.exports = Reflux.createStore({
   },
 
   fetchData: function () {
-    request
-      .get( GROUPS_URL, function (err,res) {
-          this.list = res.body;
-          this.trigger(this.list);
-        }.bind(this));
+    ApiHelper.fetchGroups(this);
   }
 
 });

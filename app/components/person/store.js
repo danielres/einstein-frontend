@@ -1,11 +1,9 @@
 'use strict';
 
 var Reflux  = require('reflux')
-var request = require('superagent')
-
 var PersonActions = require('./actions')
 
-var BASE_URL = 'http://localhost:3000/people'
+var ApiHelper = require('./../helpers/api_helper.js')
 
 
 module.exports = Reflux.createStore({
@@ -22,11 +20,7 @@ module.exports = Reflux.createStore({
   },
 
   fetchData: function (personId) {
-    request
-      .get( BASE_URL + '/' + personId, function (err,res) {
-          this.item = res.body;
-          this.trigger(this.item);
-        }.bind(this));
+    ApiHelper.fetchPerson(personId, this);
   }
 
 });
