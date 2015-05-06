@@ -9,6 +9,8 @@ var RB = require('react-router-bootstrap')
 var GroupsActions = require('./groups/actions')
 var GroupsStore   = require('./groups/store')
 
+var Link = require('react-router').Link
+
 
 var Groups = React.createClass({
   mixins: [Reflux.connect(GroupsStore, "list")],
@@ -59,7 +61,9 @@ var Group = React.createClass({
           { group.members.map(function(m, i){
                 return (
                   <li>
-                    <img src={m.avatar} className="img-circle" width="80" alt={m.name + ' avatar'} title={m.name} />
+                    <Link to="person" params={{personId: m.id}}>
+                      <img src={m.avatar} className="img-circle" width="80" alt={m.name + ' avatar'} title={m.name} />
+                    </Link>
                   </li>
                 )
               })}
