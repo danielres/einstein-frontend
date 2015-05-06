@@ -4,10 +4,10 @@ var React  = require('react')
 var Reflux = require('reflux')
 
 var B  = require('react-bootstrap')
-var RB = require('react-router-bootstrap')
 
 var GroupsActions = require('./groups/actions')
 var GroupsStore   = require('./groups/store')
+var GroupsList    = require('./groups/list')
 
 var Link = require('react-router').Link
 
@@ -37,19 +37,6 @@ var Groups = React.createClass({
   }
 });
 
-var GroupsList = React.createClass({
-    render: function () {
-        return (
-            <div>
-              { this.props.groups.map(function(group, i){
-                var headerText = "Group " + (group.id + 1);
-                return <RB.ListGroupItemLink to="group" key={i} params={{groupId: group.id}} header={headerText}>description</RB.ListGroupItemLink>
-              })}
-
-            </div>
-        );
-    }
-});
 
 var Group = React.createClass({
   render: function() {
