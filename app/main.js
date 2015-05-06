@@ -48,7 +48,9 @@ var routes = (
     <Route name="profile"      handler={Placeholder}  path="profile" />
     <Route name="settings"     handler={Placeholder}  path="settings" />
     <Route name="logout"       handler={Placeholder}  path="logout" />
-    <Route name="person"       handler={Person}       path="person" />
+    <Route name="people"       handler={People}       path="people">
+      <Route name="person"     handler={People.Person} path=":personId" />
+    </Route>
   </Route>
 );
 
