@@ -12,6 +12,14 @@ var ApiHelper = {
       }.bind(that));
   },
 
+  fetchGroup: function (groupId, that) {
+    request
+      .get(API_URL + '/groups/' + groupId, function (err, res) {
+        that.item = res.body;
+        that.trigger(that.item);
+      }.bind(that));
+  },
+
   fetchPerson: function (personId, that) {
     request
       .get(API_URL + '/people/' + personId, function (err, res) {
