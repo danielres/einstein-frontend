@@ -4,7 +4,7 @@ var React  = require('react')
 
 var B  = require('react-bootstrap')
 
-var GroupsList = require('./groups/list')
+var GroupsList = require('./groups/groups_list')
 var Group      = require('./groups/group')
 
 var Link = require('react-router').Link

@@ -1,7 +1,7 @@
 'use strict';
 
 var Reflux  = require('reflux')
-var GroupsActions = require('./actions')
+var GroupsActions = require('./groups_actions')
 
 var ApiHelper = require('./../helpers/api_helper.js')
 
