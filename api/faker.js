@@ -29,13 +29,25 @@ var peopleSets = [
     _.slice(people,  3, 25),
 ]
 
+var groupNames = [
+    "Study practice 1",
+    "Study practice 2",
+    "Study practice 3",
+    "Study practice 4",
+    "Study practice 5",
+    "Study practice 6",
+    "Study practice 7",
+    "Study practice 8",
+];
+
+
 module.exports = function(){
     return {
         people: people,
         groups: _.times(peopleSets.length, function (n) {
             return {
                 id: n,
-                name: "Group number " + (n + 1),
+                name: groupNames[n],
                 members: peopleSets[n]
             }
         })
