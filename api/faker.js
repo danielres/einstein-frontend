@@ -30,14 +30,14 @@ var peopleSets = [
 ]
 
 var groupNames = [
-    "Study practice 1",
-    "Study practice 2",
-    "Study practice 3",
-    "Study practice 4",
-    "Study practice 5",
-    "Study practice 6",
-    "Study practice 7",
-    "Study practice 8",
+    "Political Science Q/A",
+    "Computer Science weekly BBQ",
+    "Preparing for next semester",
+    "Looking for a place to live",
+    "Library new arrivals",
+    "Study groups",
+    "Health habits",
+    "Erasmus 2015",
 ];
 
 
@@ -48,6 +48,7 @@ module.exports = function(){
             return {
                 id: n,
                 name: groupNames[n],
+                description: faker.company.catchPhrase(),
                 members: peopleSets[n]
             }
         })
