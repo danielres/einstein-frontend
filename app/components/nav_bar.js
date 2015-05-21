@@ -85,8 +85,7 @@ var NavBar = React.createClass({
                 )
               })}
                 <B.MenuItem style={{textAlign: 'right'}}>
-                  <br />
-                  <B.Glyphicon  glyph='option-horizontal' />
+                  <B.Glyphicon style={{ margin: "15px 0"}}  glyph='option-horizontal' />
                 </B.MenuItem>
             </B.DropdownButton>
 
