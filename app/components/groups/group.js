@@ -129,6 +129,7 @@ var Comment = React.createClass({
               <div>
                 <small className="text-muted">
                   {2} days
+                  {" | "}<a href="#">follow</a>
                   { this.props.reply && " | "  }
                   { this.props.reply && <a href="#">reply</a>  }
                 </small>
