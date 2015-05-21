@@ -42,7 +42,7 @@ var GroupsDashboard = React.createClass({
                 <B.ListGroup>
                   { [1,2,3,4,5,6,7,8].map(function(i){
                       return (
-                        <B.ListGroupItem header={ 'Lorem Ipsum ' + i} href>In group {i}</B.ListGroupItem>
+                        <B.ListGroupItem header={ 'Lorem Ipsum ' + i} href="#">In group {i}</B.ListGroupItem>
                       )
                     })}
                 </B.ListGroup>
