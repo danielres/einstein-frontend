@@ -21,10 +21,33 @@ var Person = React.createClass({
     var p = this.state.item;
     return(
       <div>
-        <B.PageHeader>{p.name} <small>description</small></B.PageHeader>
-        <div>
-          <img src={p.avatar} className="img-circle" alt={p.name + ' avatar'} title={p.name} />
-        </div>
+        <B.Row>
+          <B.Col md={2}>
+            <img src={p.avatar} className="img-circle" alt={p.name + ' avatar'} title={p.name} />
+          </B.Col>
+          <B.Col md={10}>
+            <B.PageHeader>{p.name}</B.PageHeader>
+            <h2>Lorem ipsum</h2>
+            <p>Lorem ipsum</p>
+            <p>Lorem ipsum</p>
+            <p>Lorem ipsum</p>
+            <p>Lorem ipsum</p>
+            <hr />
+            <h2>Lorem ipsum</h2>
+            <p>Lorem ipsum</p>
+            <p>Lorem ipsum</p>
+            <p>Lorem ipsum</p>
+            <p>Lorem ipsum</p>
+            <hr />
+            <h2>Lorem ipsum</h2>
+            <p>Lorem ipsum</p>
+            <p>Lorem ipsum</p>
+            <p>Lorem ipsum</p>
+            <p>Lorem ipsum</p>
+            <hr />
+          </B.Col>
+        </B.Row>
+
       </div>
     );
   }
