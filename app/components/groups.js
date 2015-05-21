@@ -6,6 +6,7 @@ var B  = require('react-bootstrap')
 
 var GroupsDashboard = require('./groups/groups_dashboard')
 var GroupsList = require('./groups/groups_list')
+var GroupsMenu = require('./groups/groups_menu')
 var Group      = require('./groups/group')
 
 
@@ -22,6 +23,7 @@ var Groups = React.createClass({
           { groupId && <Group groupId={groupId} /> || <GroupsDashboard /> }
         </B.Col>
         <B.Col md={4}>
+          <GroupsMenu />
           <GroupsList />
         </B.Col>
       </B.Row>
