@@ -63,17 +63,19 @@ var Group = React.createClass({
 
         <h3>Discussions</h3>
 
+        <EmptyComment />
+
         { group.members.map(function(m, i){
           return (
             <div>
-              <Comment />
-              <Comment>
-                <Comment />
-                <Comment />
-                <Comment />
+              <Comment author={group.members[3]} reply />
+              <Comment author={group.members[0]} reply>
+                <Comment author={group.members[1]} />
+                <Comment author={group.members[2]} />
+                <Comment author={group.members[3]} />
               </Comment>
-              <Comment />
-              <Comment />
+              <Comment author={group.members[1]} reply />
+              <Comment author={group.members[3]} reply />
             </div>
           )
         })}
@@ -89,7 +91,7 @@ var Group = React.createClass({
 
 });
 
-var Comment = React.createClass({
+var EmptyComment = React.createClass({
   render: function() {
       var avatar = faker.internet.avatar();
       var name   = faker.name.findName();
@@ -100,10 +102,36 @@ var Comment = React.createClass({
             <B.Col md={1}>
               <img src={avatar} className="img-circle" width="40" alt={name + ' avatar'} title={name} />
             </B.Col>
+            <B.Col md={11} style={{ textAlign: 'right'}}>
+              <textarea style={{ width: '100%' }} rows="3" name="" id=""></textarea>
+              <B.Button bsStyle='primary'>post</B.Button>
+            </B.Col>
+          </B.Row>
+      </div>
+    );
+  }
+
+});
+
+var Comment = React.createClass({
+  render: function() {
+      var avatar = this.props.author.avatar;
+      var name   = this.props.author.name;
+    return(
+      <div>
+          <hr />
+          <B.Row>
+            <B.Col md={1}>
+              <img src={avatar} className="img-circle" width="40" alt={name + ' avatar'} title={name} />
+            </B.Col>
             <B.Col md={10}>
               { faker.lorem.sentences(3)}
               <div>
-                <small className="text-muted">{2} days</small>
+                <small className="text-muted">
+                  {2} days
+                  { this.props.reply && " | "  }
+                  { this.props.reply && <a href="#">reply</a>  }
+                </small>
               </div>
               {this.props.children}
             </B.Col>
