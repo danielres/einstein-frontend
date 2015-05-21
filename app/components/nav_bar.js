@@ -63,6 +63,9 @@ var NavBar = React.createClass({
               <RB.MenuItemLink to="profile"  disabled>
                 <FormattedMessage message={ this.getIntlMessage('profile') } />
               </RB.MenuItemLink>
+              <RB.MenuItemLink to="profile"  disabled>
+                <FormattedMessage message={ this.getIntlMessage('profile') } />
+              </RB.MenuItemLink>
               <RB.MenuItemLink to="settings" disabled>
                 <FormattedMessage message={ this.getIntlMessage('settings') } />
               </RB.MenuItemLink>
@@ -71,6 +74,22 @@ var NavBar = React.createClass({
                 <FormattedMessage message={ this.getIntlMessage('logout') } />
               </RB.MenuItemLink>
             </B.DropdownButton>
+            <B.DropdownButton eventKey={3} title={<B.Glyphicon glyph='bell'><B.Badge style={{background: "red", position: "relative", top:  "-18px", left:  "-10px", fontSize: '0.75em'}}>15</B.Badge></B.Glyphicon>}>
+              { [1, 2, 3, 4, 5, 6, 7, 8].map(function(i){
+                return (
+                  <RB.MenuItemLink to="dashboard"  disabled>
+                    Notification {i}
+                    <br/>
+                    <small><FormattedMessage message="Notification contents" /></small>
+                  </RB.MenuItemLink>
+                )
+              })}
+                <B.MenuItem style={{textAlign: 'right'}}>
+                  <br />
+                  <B.Glyphicon  glyph='option-horizontal' />
+                </B.MenuItem>
+            </B.DropdownButton>
+
           </B.Nav>
         </B.CollapsableNav>
       </B.Navbar>
