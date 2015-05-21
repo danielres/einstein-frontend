@@ -4,10 +4,9 @@ var React  = require('react')
 
 var B  = require('react-bootstrap')
 
+var GroupsDashboard = require('./groups/groups_dashboard')
 var GroupsList = require('./groups/groups_list')
 var Group      = require('./groups/group')
-
-var Link = require('react-router').Link
 
 
 var Groups = React.createClass({
@@ -20,7 +19,7 @@ var Groups = React.createClass({
     return (
       <B.Row>
         <B.Col md={8}>
-          { groupId && <Group groupId={groupId} /> || "GROUPS DASHBOARD" }
+          { groupId && <Group groupId={groupId} /> || <GroupsDashboard /> }
         </B.Col>
         <B.Col md={4}>
           <GroupsList />
