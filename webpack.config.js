@@ -1,12 +1,12 @@
 module.exports = {
-  entry: ['./app/main.js'],
+  entry: ['./app/main.jsx'],
   output: {
     path: './build',
     filename: 'bundle.js'
   },
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'jsx-loader' }
+      { test: /\.jsx$/, loader: 'jsx-loader' }
     ]
   }
 };
