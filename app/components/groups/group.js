@@ -76,14 +76,14 @@ var Group = React.createClass({
         { group.members.map(function(m, i){
           return (
             <div>
-              <Comment author={group.members[3]} reply />
-              <Comment author={group.members[0]} reply>
+              <Comment author={group.members[3]} follow reply />
+              <Comment author={group.members[0]} follow reply>
                 <Comment author={group.members[1]} />
                 <Comment author={group.members[2]} />
                 <Comment author={group.members[3]} />
               </Comment>
-              <Comment author={group.members[1]} reply />
-              <Comment author={group.members[3]} reply />
+              <Comment author={group.members[1]} follow reply />
+              <Comment author={group.members[3]} follow reply />
             </div>
           )
         })}
@@ -135,14 +135,7 @@ var Comment = React.createClass({
             </B.Col>
             <B.Col md={10}>
               { faker.lorem.sentences(3)}
-              <div>
-                <small className="text-muted">
-                  {2} days
-                  {" | "}<a href="#">follow</a>
-                  { this.props.reply && " | "  }
-                  { this.props.reply && <a href="#">reply</a>  }
-                </small>
-              </div>
+              <Meta follow={ this.props.follow } reply={ this.props.reply } repost={ this.props.repost } />
               {this.props.children}
             </B.Col>
           </B.Row>
@@ -151,5 +144,24 @@ var Comment = React.createClass({
   }
 
 });
+
+var Meta = React.createClass({
+  render: function() {
+    return(
+      <div>
+        <small className="text-muted">
+          {2} days
+          { this.props.follow && <span> &nbsp; </span> }
+          { this.props.follow && <a href="#" title="follow"><B.Glyphicon glyph="star-empty" /></a> }
+          { this.props.reply  && <span> &nbsp; </span> }
+          { this.props.reply  && <a href="#" title="reply"><B.Glyphicon glyph="comment" /></a> }
+          { this.props.repost && <span> &nbsp; </span> }
+          { this.props.repost && <a href="#" title="repost"><B.Glyphicon glyph="retweet" /></a> }
+        </small>
+      </div>
+    );
+  }
+});
+
 
 module.exports = Container;
