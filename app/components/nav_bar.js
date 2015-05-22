@@ -63,9 +63,6 @@ var NavBar = React.createClass({
               <RB.MenuItemLink to="profile"  disabled>
                 <FormattedMessage message={ this.getIntlMessage('profile') } />
               </RB.MenuItemLink>
-              <RB.MenuItemLink to="profile"  disabled>
-                <FormattedMessage message={ this.getIntlMessage('profile') } />
-              </RB.MenuItemLink>
               <RB.MenuItemLink to="settings" disabled>
                 <FormattedMessage message={ this.getIntlMessage('settings') } />
               </RB.MenuItemLink>
