@@ -123,14 +123,15 @@ var EmptyComment = React.createClass({
 
 var Comment = React.createClass({
   render: function() {
-      var avatar = this.props.author.avatar;
-      var name   = this.props.author.name;
+      var author = this.props.author;
     return(
       <div>
           <hr />
           <B.Row>
             <B.Col md={1}>
-              <img src={avatar} className="img-circle" width="40" alt={name + ' avatar'} title={name} />
+                <Link to="person" params={{personId: author.id}}>
+                  <img src={author.avatar} style={{marginBottom: '10px'}} className="img-circle" width="40" alt={author.name + ' avatar'} title={author.name} />
+                </Link>
             </B.Col>
             <B.Col md={10}>
               { faker.lorem.sentences(3)}
