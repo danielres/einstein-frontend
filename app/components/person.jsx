@@ -6,7 +6,7 @@ var Reflux = require('reflux')
 var PersonActions = require('../actions/person_actions')
 var PersonStore   = require('../stores/person_store')
 
-var Meta   = require('./meta.jsx')
+var Meta   = require('./meta')
 
 var B  = require('react-bootstrap')
 

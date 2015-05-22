@@ -4,10 +4,10 @@ var React  = require('react')
 
 var B  = require('react-bootstrap')
 
-var GroupsDashboard = require('./groups/groups_dashboard.jsx')
-var GroupsList = require('./groups/groups_list.jsx')
-var GroupsMenu = require('./groups/groups_menu.jsx')
-var Group      = require('./groups/group.jsx')
+var GroupsDashboard = require('./groups/groups_dashboard')
+var GroupsList = require('./groups/groups_list')
+var GroupsMenu = require('./groups/groups_menu')
+var Group      = require('./groups/group')
 
 
 var Groups = React.createClass({

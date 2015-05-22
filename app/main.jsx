@@ -9,12 +9,12 @@ var Router       = require('react-router')
   , DefaultRoute = Router.DefaultRoute
   , Route        = Router.Route
 
-var NavBar      = require('./components/nav_bar.jsx')
-var Dashboard   = require('./components/dashboard.jsx')
-var Placeholder = require('./components/placeholder.jsx')
-var Inbox       = require('./components/inbox.jsx')
-var Groups      = require('./components/groups.jsx')
-var Person      = require('./components/person.jsx')
+var NavBar      = require('./components/nav_bar')
+var Dashboard   = require('./components/dashboard')
+var Placeholder = require('./components/placeholder')
+var Inbox       = require('./components/inbox')
+var Groups      = require('./components/groups')
+var Person      = require('./components/person')
 
 
 var App = React.createClass({

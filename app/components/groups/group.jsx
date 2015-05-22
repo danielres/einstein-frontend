@@ -6,7 +6,7 @@ var Reflux = require('reflux')
 var GroupActions = require('../../actions/group_actions')
 var GroupStore   = require('../../stores/group_store')
 
-var Meta   = require('../meta.jsx')
+var Meta   = require('../meta')
 
 var B  = require('react-bootstrap')
 var Link  = require('react-router').Link
