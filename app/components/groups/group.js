@@ -61,7 +61,15 @@ var Group = React.createClass({
         <br />
 
 
-        <h3>Discussions</h3>
+        <B.Row >
+          <B.Col md={7}>
+            <h3>Discussions</h3>
+          </B.Col>
+          <B.Col md={5} style={{ position: 'relative', bottom: '-17px' }}>
+            <B.Input type='text' addonBefore={<B.Glyphicon glyph='search' />} />
+          </B.Col>
+        </B.Row>
+
 
         <EmptyComment />
 
