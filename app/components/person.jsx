@@ -6,6 +6,8 @@ var Reflux = require('reflux')
 var PersonActions = require('../actions/person_actions')
 var PersonStore   = require('../stores/person_store')
 
+var Meta   = require('./meta.jsx')
+
 var B  = require('react-bootstrap')
 
 var faker = require("faker");
@@ -62,22 +64,5 @@ var Publication = React.createClass({
   }
 });
 
-var Meta = React.createClass({
-  render: function() {
-    return(
-      <div>
-        <small className="text-muted">
-          {2} days
-          { this.props.follow && <span> &nbsp; </span> }
-          { this.props.follow && <a href="#" title="follow"><B.Glyphicon glyph="star-empty" /></a> }
-          { this.props.reply  && <span> &nbsp; </span> }
-          { this.props.reply  && <a href="#" title="reply"><B.Glyphicon glyph="comment" /></a> }
-          { this.props.repost && <span> &nbsp; </span> }
-          { this.props.repost && <a href="#" title="repost"><B.Glyphicon glyph="retweet" /></a> }
-        </small>
-      </div>
-    );
-  }
-});
 
 module.exports = Person;
