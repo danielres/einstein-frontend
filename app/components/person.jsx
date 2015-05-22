@@ -3,8 +3,8 @@
 var React = require('react')
 var Reflux = require('reflux')
 
-var PersonActions = require('./person/actions')
-var PersonStore   = require('./person/store')
+var PersonActions = require('../actions/person_actions')
+var PersonStore   = require('../stores/person_store')
 
 var B  = require('react-bootstrap')
 

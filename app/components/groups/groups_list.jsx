@@ -4,8 +4,8 @@ var React = require('react')
 var RB    = require('react-router-bootstrap')
 
 var Reflux = require('reflux')
-var GroupsStore   = require('./groups_store')
-var GroupsActions = require('./groups_actions')
+var GroupsStore   = require('../../stores/groups_store')
+var GroupsActions = require('../../actions/groups_actions')
 
 
 var Container = React.createClass({

@@ -3,8 +3,8 @@
 var React = require('react')
 var Reflux = require('reflux')
 
-var GroupActions = require('./group_actions')
-var GroupStore   = require('./group_store')
+var GroupActions = require('../../actions/group_actions')
+var GroupStore   = require('../../stores/group_store')
 
 var B  = require('react-bootstrap')
 var Link  = require('react-router').Link

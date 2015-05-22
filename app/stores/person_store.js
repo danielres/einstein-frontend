@@ -1,9 +1,9 @@
 'use strict';
 
 var Reflux  = require('reflux')
-var PersonActions = require('./actions')
+var PersonActions = require('../actions/person_actions')
 
-var ApiHelper = require('./../helpers/api_helper.js')
+var ApiHelper = require('../helpers/api_helper')
 
 
 module.exports = Reflux.createStore({
