@@ -12,16 +12,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "faker": "^2.1.2",
     "jsdom": "^3.1.2",
     "json-server": "^0.7.1",
-    "lodash": "^3.7.0",
     "mocha": "^2.2.4",
-    "react-tools": "^0.13.2",
-    "reflux": "^0.2.7",
     "webpack-dev-server": "^1.8.2"
   },
   "dependencies": {
+    "react-tools": "^0.13.2",
+    "faker": "^2.1.2",
+    "reflux": "^0.2.7",
+    "lodash": "^3.7.0",
     "classnames": "^1.2.0",
     "express": "^4.12.4",
     "intl": "^0.1.4",
