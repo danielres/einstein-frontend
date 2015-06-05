@@ -9,4 +9,7 @@ server.use(router);
 
 module.exports = server;
 
-server.listen(3000, function() { console.log('serving fake api on port 3000')});
+
+if(require.main === module){
+  server.listen(3000, function() { console.log('serving fake api on port 3000')});
+}
