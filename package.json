@@ -7,8 +7,9 @@
     "start": "node index.js",
     "test": "node_modules/.bin/mocha --watch --compilers .:tests/support/compiler.js tests/*test.js",
     "build": "./node_modules/.bin/webpack",
-    "api-faker": "node api/fake-api-server.js",
-    "dev": "./node_modules/.bin/webpack-dev-server --devtool eval --progress --colors --content-base build"
+    "dev": "npm run dev-server & npm run api-faker",
+    "dev-server": "./node_modules/.bin/webpack-dev-server --devtool eval --progress --colors --content-base build",
+    "api-faker": "node api/fake-api-server.js"
   },
   "author": "",
   "license": "ISC",
