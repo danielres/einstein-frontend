@@ -1,7 +1,7 @@
 'use strict';
 
 var request = require('superagent');
-var API_URL = 'http://localhost:3000';
+var API_URL = '/api/fake';
 
 var ApiHelper = {
   fetchGroups: function (that) {
