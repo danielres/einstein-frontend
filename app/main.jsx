@@ -9,6 +9,7 @@ var Router       = require('react-router')
   , DefaultRoute = Router.DefaultRoute
   , Route        = Router.Route
 
+var UserBox     = require('./components/user_box')
 var NavBar      = require('./components/nav_bar')
 var Dashboard   = require('./components/dashboard')
 var Placeholder = require('./components/placeholder')
@@ -25,6 +26,7 @@ var App = React.createClass({
           <B.Col><NavBar /></B.Col>
         </B.Row>
         <B.Row>
+          <UserBox />
           <B.Col><RouteHandler /></B.Col>
         </B.Row>
       </B.Grid>

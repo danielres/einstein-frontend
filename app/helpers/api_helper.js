@@ -27,6 +27,17 @@ var ApiHelper = {
         that.item = res.body;
         that.trigger(that.item);
       }.bind(that));
+  },
+
+  signIn: function (username, password, that) {
+    request
+      .post(API_URL + '/login/')
+      .send({ username: username, password: password })
+      .set('Accept', 'application/json')
+      .end(function(err, res){
+        that.user = res.body;
+        that.trigger(that.user);
+      }.bind(that));
   }
 
 };
