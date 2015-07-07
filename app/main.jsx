@@ -9,7 +9,7 @@ var Router       = require('react-router')
   , DefaultRoute = Router.DefaultRoute
   , Route        = Router.Route
 
-var UserBox     = require('./components/user_box')
+var LoginForm   = require('./components/login_form')
 var NavBar      = require('./components/nav_bar')
 var Dashboard   = require('./components/dashboard')
 var Placeholder = require('./components/placeholder')
@@ -32,7 +32,7 @@ var App = React.createClass({
           <B.Col>{ user.logged ? <NavBar /> : '' }</B.Col>
         </B.Row>
         <B.Row>
-          <B.Col>{ user.logged ? <RouteHandler /> : <UserBox user={user} /> }</B.Col>
+          <B.Col>{ user.logged ? <RouteHandler /> : <LoginForm /> }</B.Col>
         </B.Row>
       </B.Grid>
     );

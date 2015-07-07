@@ -6,22 +6,6 @@ var B  = require('react-bootstrap')
 var SessionActions = require('../actions/session_actions');
 
 
-var UserBoxComponent = React.createClass({
-  render: function() {
-    var user  = this.props.user;
-    if (user.logged) {
-      var user_display = "Logged in as: " + user.email;
-    } else {
-      var user_display = <LoginFormComponent />;
-    }
-
-    return (
-      <div>{ user_display }</div>
-    );
-  }
-
-});
-
 var LoginFormComponent = React.createClass({
 
   handleSubmit: function(e){
@@ -61,4 +45,4 @@ var LoginFormComponent = React.createClass({
 });
 
 
-module.exports = UserBoxComponent;
+module.exports = LoginFormComponent;
