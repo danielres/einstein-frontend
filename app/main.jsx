@@ -29,11 +29,10 @@ var App = React.createClass({
     return (
       <B.Grid>
         <B.Row>
-          <B.Col><NavBar /></B.Col>
+          <B.Col>{ user.logged ? <NavBar /> : '' }</B.Col>
         </B.Row>
         <B.Row>
-          <UserBox user={user} />
-          <B.Col><RouteHandler /></B.Col>
+          <B.Col>{ user.logged ? <RouteHandler /> : <UserBox user={user} /> }</B.Col>
         </B.Row>
       </B.Grid>
     );
