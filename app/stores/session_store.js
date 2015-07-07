@@ -18,6 +18,11 @@ module.exports = Reflux.createStore({
   onLogin: function (email, password) {
     ApiHelper.signIn(email, password, this);
     return this.user;
+  },
+
+  onLogout: function () {
+    this.getInitialState();
+    this.trigger(this.user);
   }
 
 });

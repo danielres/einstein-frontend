@@ -11,6 +11,7 @@ var IntlMixin         = ReactIntl.IntlMixin;
 var FormattedMessage  = ReactIntl.FormattedMessage;
 var FormattedRelative = ReactIntl.FormattedRelative;
 
+var SessionActions = require('../actions/session_actions');
 
 var intlData = {
   locales : ['en-US'],
@@ -68,9 +69,9 @@ var NavBar = React.createClass({
                 <FormattedMessage message={ this.getIntlMessage('settings') } />
               </RB.MenuItemLink>
               <B.MenuItem divider />
-              <RB.MenuItemLink to="logout" disabled>
+              <B.MenuItem onSelect={SessionActions.logout}>
                 <FormattedMessage message={ this.getIntlMessage('logout') } />
-              </RB.MenuItemLink>
+              </B.MenuItem>
             </B.DropdownButton>
             <B.DropdownButton noCaret eventKey={3} title={<B.Glyphicon glyph='bell'><B.Badge style={{background: "red", position: "absolute", marginTop: "-17px", marginLeft: "-8px", fontSize: '0.7em'}}>15</B.Badge></B.Glyphicon>}>
               { [1, 2, 3, 4, 5, 6, 7, 8].map(function(i){
