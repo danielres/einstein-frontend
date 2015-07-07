@@ -15,8 +15,7 @@ var UserBoxComponent = React.createClass({
 
   render: function() {
     var user  = this.state.user;
-
-    if (user && user.email) {
+    if (user.logged) {
       var user_display = "Logged in as: " + user.email;
     } else {
       var user_display = <LoginFormComponent />;

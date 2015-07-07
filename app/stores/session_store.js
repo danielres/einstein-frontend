@@ -11,7 +11,7 @@ module.exports = Reflux.createStore({
   listenables: [SessionActions],
 
   getInitialState: function () {
-    this.user = {};
+    this.user = { logged: false };
     return this.user;
   },
 
