@@ -35,9 +35,13 @@ var ApiHelper = {
       .send({ username: username, password: password })
       .set('Accept', 'application/json')
       .end(function(err, res){
-        that.user = res.body;
-        that.user.logged = true;
-        that.trigger(that.user);
+        if(err){
+          console.log(err);
+        }else{
+          that.user = res.body;
+          that.user.logged = true;
+          that.trigger(that.user);
+        }
       }.bind(that));
   }
 
