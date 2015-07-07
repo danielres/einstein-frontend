@@ -18,11 +18,13 @@ var Person = React.createClass({
     router: React.PropTypes.func
   },
   componentDidMount: function () {
-    var personId = this.context.router.getCurrentParams().personId;
+    var personId = this.props.id || this.context.router.getCurrentParams().personId;
     PersonActions.load(personId);
   },
   render: function() {
     var p = this.state.item;
+    var menu = this.props.is_current_user ? <CurrentUserMenu /> : <OtherUserMenu />;
+
     return(
       <div>
         <B.Row>
@@ -31,10 +33,7 @@ var Person = React.createClass({
               <img src={p.avatar} className="img-circle" alt={p.name + ' avatar'} title={p.name} />
             </p>
             <br />
-            <B.ListGroup>
-              <B.ListGroupItem href='#'><B.Glyphicon glyph="star-empty" /> Follow</B.ListGroupItem>
-              <B.ListGroupItem href='#'><B.Glyphicon glyph="comment" />  Private message</B.ListGroupItem>
-            </B.ListGroup>
+            {menu}
           </B.Col>
           <B.Col md={9}>
             <B.PageHeader>{p.name}</B.PageHeader>
@@ -47,6 +46,27 @@ var Person = React.createClass({
         </B.Row>
 
       </div>
+    );
+  }
+});
+
+var CurrentUserMenu = React.createClass({
+  render: function() {
+    return(
+      <B.ListGroup>
+        <B.ListGroupItem href='#'><B.Glyphicon glyph="edit" /> Edit</B.ListGroupItem>
+      </B.ListGroup>
+    );
+  }
+});
+
+var OtherUserMenu = React.createClass({
+  render: function() {
+    return(
+      <B.ListGroup>
+        <B.ListGroupItem href='#'><B.Glyphicon glyph="star-empty" /> Follow</B.ListGroupItem>
+        <B.ListGroupItem href='#'><B.Glyphicon glyph="comment" />  Private message</B.ListGroupItem>
+      </B.ListGroup>
     );
   }
 });

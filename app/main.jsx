@@ -16,6 +16,7 @@ var Placeholder = require('./components/placeholder')
 var Inbox       = require('./components/inbox')
 var Groups      = require('./components/groups')
 var Person      = require('./components/person')
+var UserProfile = require('./components/user_profile')
 
 var Reflux = require('reflux');
 var SessionStore   = require('./stores/session_store');
@@ -32,7 +33,7 @@ var App = React.createClass({
           <B.Col>{ user.logged ? <NavBar user={ user } /> : '' }</B.Col>
         </B.Row>
         <B.Row>
-          <B.Col>{ user.logged ? <RouteHandler /> : <LoginForm /> }</B.Col>
+          <B.Col>{ user.logged ? <RouteHandler user={ user } /> : <LoginForm /> }</B.Col>
         </B.Row>
       </B.Grid>
     );
@@ -52,7 +53,7 @@ var routes = (
     <Route name="open_courses" handler={Placeholder}  path="open_courses" />
     <Route name="network"      handler={Placeholder}  path="network" />
     <Route name="uniworld"     handler={Placeholder}  path="uniworld" />
-    <Route name="profile"      handler={Placeholder}  path="profile" />
+    <Route name="profile"      handler={UserProfile}  path="profile" />
     <Route name="settings"     handler={Placeholder}  path="settings" />
     <Route name="logout"       handler={Placeholder}  path="logout" />
     <Route name="person"       handler={Person}       path="/people/:personId" />
