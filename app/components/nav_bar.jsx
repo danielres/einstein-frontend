@@ -32,6 +32,7 @@ var NavBar = React.createClass({
   mixins: [IntlMixin],
 
   render: function() {
+    var user = this.props.user;
     return(
       <B.Navbar toggleNavKey={0}>
         <B.CollapsableNav eventKey={0}>
@@ -59,7 +60,7 @@ var NavBar = React.createClass({
             </RB.NavItemLink>
           </B.Nav>
           <B.Nav navbar right>
-            <B.DropdownButton eventKey={3} title={<B.Glyphicon glyph='user' />}>
+            <B.DropdownButton eventKey={3} title={ <span><B.Glyphicon glyph='user' /> <b>{user.username}</b></span>}>
               <RB.MenuItemLink to="profile"  disabled>
                 <FormattedMessage message={ this.getIntlMessage('profile') } />
               </RB.MenuItemLink>
@@ -96,7 +97,7 @@ var NavBar = React.createClass({
 
 module.exports = React.createClass({
   render: function(){
-    return(<NavBar {...intlData} />);
+    return(<NavBar {...intlData} user={this.props.user} />);
   }
 });
 

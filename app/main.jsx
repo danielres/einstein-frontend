@@ -29,7 +29,7 @@ var App = React.createClass({
     return (
       <B.Grid>
         <B.Row>
-          <B.Col>{ user.logged ? <NavBar /> : '' }</B.Col>
+          <B.Col>{ user.logged ? <NavBar user={ user } /> : '' }</B.Col>
         </B.Row>
         <B.Row>
           <B.Col>{ user.logged ? <RouteHandler /> : <LoginForm /> }</B.Col>
