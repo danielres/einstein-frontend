@@ -18,25 +18,28 @@ var LoginFormComponent = React.createClass({
 
   render: function() {
     return (
-      <form onSubmit={this.handleSubmit} className='form-horizontal'>
+      <form
+        style={{ marginTop: 60 }}
+        className='form-horizontal'
+        onSubmit={this.handleSubmit}>
       <B.Input
         type='text'
         defaultValue='example@example.com'
         label='Email'
         ref='username'
-        labelClassName='col-xs-2'
+        labelClassName='col-xs-2 col-md-offset-2'
         wrapperClassName='col-xs-4' />
       <B.Input
         type='password'
         defaultValue='password'
         label='Password'
         ref='password'
-        labelClassName='col-xs-2'
+        labelClassName='col-xs-2 col-md-offset-2'
         wrapperClassName='col-xs-4' />
       <B.Input
         type='submit'
         label=' '
-        labelClassName='col-xs-2'
+        labelClassName='col-xs-2  col-md-offset-2'
         wrapperClassName='col-xs-4' />
       </form>
     );
