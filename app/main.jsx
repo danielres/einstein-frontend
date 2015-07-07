@@ -17,16 +17,22 @@ var Inbox       = require('./components/inbox')
 var Groups      = require('./components/groups')
 var Person      = require('./components/person')
 
+var Reflux = require('reflux');
+var SessionStore   = require('./stores/session_store');
+
 
 var App = React.createClass({
+  mixins: [Reflux.connect(SessionStore, "user")],
+
   render: function() {
+    var user  = this.state.user;
     return (
       <B.Grid>
         <B.Row>
           <B.Col><NavBar /></B.Col>
         </B.Row>
         <B.Row>
-          <UserBox />
+          <UserBox user={user} />
           <B.Col><RouteHandler /></B.Col>
         </B.Row>
       </B.Grid>

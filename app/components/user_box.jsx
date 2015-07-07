@@ -1,20 +1,14 @@
 'use strict';
 
 var React = require('react')
-
-var Reflux = require('reflux');
-var SessionStore   = require('../stores/session_store');
-var SessionActions = require('../actions/session_actions');
-
 var B  = require('react-bootstrap')
+
+var SessionActions = require('../actions/session_actions');
 
 
 var UserBoxComponent = React.createClass({
-
-  mixins: [Reflux.connect(SessionStore, "user")],
-
   render: function() {
-    var user  = this.state.user;
+    var user  = this.props.user;
     if (user.logged) {
       var user_display = "Logged in as: " + user.email;
     } else {
