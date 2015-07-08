@@ -1,13 +1,22 @@
 'use strict';
 
 var request = require('superagent');
-var API_URL = window.location.href.includes(":8080/") ? 'http://localhost:3000' : '/api/fake';
 
+var FAKE_API_URL = window.location.href.includes(":8080/") ? 'http://localhost:3001' : '/api/fake';
+var REAL_API_URL = 'http://localhost:3000';
+
+var ENDPOINTS = {
+  fetchGroups: FAKE_API_URL,
+  fetchGroup:  FAKE_API_URL,
+  fetchPerson: FAKE_API_URL,
+  signIn:      REAL_API_URL,
+  access:      REAL_API_URL,
+}
 
 var ApiHelper = {
   fetchGroups: function (that) {
     request
-      .get(API_URL + "/groups", function (err, res) {
+      .get(ENDPOINTS.fetchGroups + "/groups", function (err, res) {
         that.list =  res.body;
         that.trigger(that.list);
       }.bind(that));
@@ -15,7 +24,7 @@ var ApiHelper = {
 
   fetchGroup: function (groupId, that) {
     request
-      .get(API_URL + '/groups/' + groupId, function (err, res) {
+      .get(ENDPOINTS.fetchGroup + '/groups/' + groupId, function (err, res) {
         that.item = res.body;
         that.trigger(that.item);
       }.bind(that));
@@ -23,7 +32,7 @@ var ApiHelper = {
 
   fetchPerson: function (personId, that) {
     request
-      .get(API_URL + '/people/' + personId, function (err, res) {
+      .get(ENDPOINTS.fetchPerson + '/people/' + personId, function (err, res) {
         that.item = res.body;
         that.trigger(that.item);
       }.bind(that));
@@ -31,7 +40,7 @@ var ApiHelper = {
 
   signIn: function (username, password, that) {
     request
-      .post(API_URL + '/login/')
+      .post(ENDPOINTS.signIn + '/login/')
       .send({ username: username, password: password })
       .set('Accept', 'application/json')
       .end(function(err, res){
@@ -48,7 +57,7 @@ var ApiHelper = {
 
   access: function (that) {
     request
-      .post(API_URL + '/login/')
+      .post(ENDPOINTS.access + '/login/')
       .set('Authorization', sessionStorage.getItem('access_token'))
       .set('Accept', 'application/json')
       .end(function(err, res){
