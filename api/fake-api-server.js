@@ -26,5 +26,5 @@ module.exports = server;
 
 
 if(require.main === module){
-  server.listen(3000, function() { console.log('serving fake api on port 3000')});
+  server.listen(3001, function() { console.log('serving fake api on port 3001')});
 }
