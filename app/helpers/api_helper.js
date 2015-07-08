@@ -41,6 +41,24 @@ var ApiHelper = {
           that.user = res.body;
           that.user.logged = true;
           that.trigger(that.user);
+          sessionStorage.setItem('access_token', that.user.access_token);
+        }
+      }.bind(that));
+  },
+
+  access: function (that) {
+    request
+      .post(API_URL + '/login/')
+      .set('Authorization', sessionStorage.getItem('access_token'))
+      .set('Accept', 'application/json')
+      .end(function(err, res){
+        if(err){
+          console.log(err);
+        }else{
+          that.user = res.body;
+          that.user.logged = true;
+          that.trigger(that.user);
+          sessionStorage.setItem('access_token', that.user.access_token);
         }
       }.bind(that));
   }

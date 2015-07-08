@@ -20,10 +20,15 @@ var UserProfile = require('./components/user_profile')
 
 var Reflux = require('reflux');
 var SessionStore   = require('./stores/session_store');
+var SessionActions = require('./actions/session_actions');
 
 
 var App = React.createClass({
   mixins: [Reflux.connect(SessionStore, "user")],
+
+  componentWillMount: function(){
+    SessionActions.access();
+  },
 
   render: function() {
     var user  = this.state.user;

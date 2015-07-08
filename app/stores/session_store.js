@@ -20,8 +20,15 @@ module.exports = Reflux.createStore({
     return this.user;
   },
 
+  onAccess: function () {
+    var access_token = sessionStorage.getItem('access_token');
+    ApiHelper.access(this);
+    return this.user;
+  },
+
   onLogout: function () {
     this.getInitialState();
+    sessionStorage.removeItem('access_token');
     this.trigger(this.user);
   }
 
