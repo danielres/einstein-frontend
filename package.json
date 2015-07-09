@@ -24,6 +24,7 @@
     "faker": "^2.1.2",
     "reflux": "^0.2.7",
     "lodash": "^3.7.0",
+    "bootstrap": "^3.3.5",
     "classnames": "^1.2.0",
     "express": "^4.12.4",
     "intl": "^0.1.4",
