@@ -36,7 +36,7 @@ var NavBar = React.createClass({
     var user = this.props.user;
     return(
       <B.Navbar toggleNavKey={0}>
-        <B.CollapsableNav eventKey={0}>
+        <B.CollapsibleNav eventKey={0}>
           <B.Nav navbar>
             <RB.NavItemLink key={1} to="dashboard">
               <FormattedMessage message={ this.getIntlMessage('dashboard') } />
@@ -89,7 +89,7 @@ var NavBar = React.createClass({
             </B.DropdownButton>
 
           </B.Nav>
-        </B.CollapsableNav>
+        </B.CollapsibleNav>
       </B.Navbar>
     );
   }

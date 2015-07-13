@@ -480,9 +480,9 @@
       }
     },
     "react-bootstrap": {
-      "version": "0.22.6",
-      "from": "react-bootstrap@0.22.6",
-      "resolved": "https://registry.npmjs.org/react-bootstrap/-/react-bootstrap-0.22.6.tgz",
+      "version": "0.23.7",
+      "from": "react-bootstrap@0.23.7",
+      "resolved": "https://registry.npmjs.org/react-bootstrap/-/react-bootstrap-0.23.7.tgz",
       "dependencies": {
         "classnames": {
           "version": "2.1.3",
