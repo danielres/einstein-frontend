@@ -6,11 +6,20 @@ var FAKE_API_URL = window.location.href.includes(":8080/") ? 'http://localhost:3
 var REAL_API_URL = 'http://localhost:3000';
 
 var ENDPOINTS = {
-  fetchGroups: FAKE_API_URL,
-  fetchGroup:  FAKE_API_URL,
-  fetchPerson: FAKE_API_URL,
-  signIn:      REAL_API_URL,
-  access:      REAL_API_URL,
+  signIn:
+    FAKE_API_URL,
+    // REAL_API_URL,
+  access:
+    FAKE_API_URL,
+    // REAL_API_URL,
+  fetchGroup:
+    FAKE_API_URL,
+    // REAL_API_URL + "/api/v1",
+  fetchGroups:
+    FAKE_API_URL,
+    // REAL_API_URL + "/api/v1",
+  fetchPerson:
+    FAKE_API_URL,
 }
 
 var ApiHelper = {
