@@ -21,7 +21,11 @@ module.exports = Reflux.createStore({
 
   fetchData: function () {
     ApiHelper.fetchGroups(this);
-  }
+  },
+
+  onCreate: function (params) {
+    ApiHelper.createGroup(params, this);
+  },
 
 });
 

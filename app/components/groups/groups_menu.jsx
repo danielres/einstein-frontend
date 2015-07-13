@@ -3,6 +3,8 @@
 var React = require('react')
 var B    = require('react-bootstrap')
 
+var GroupsActions = require('../../actions/groups_actions')
+
 
 var GroupsMenu = React.createClass({
   render: function() {
@@ -45,6 +47,11 @@ var FindGroupModal = React.createClass({
 var CreateGroupModal = React.createClass({
   handleSubmit: function(e){
     e.preventDefault();
+    var params = {
+             name: this.refs.name.getValue(),
+      description: this.refs.description.getValue()
+    };
+    GroupsActions.create(params);
   },
 
   render: function () {
