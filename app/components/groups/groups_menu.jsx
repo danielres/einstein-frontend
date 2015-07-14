@@ -56,17 +56,10 @@ var CreateGroupModal = React.createClass({
 
   render: function () {
     return (
-      <B.Modal {...this.props} bsStyle='' animation={true}>
+      <B.Modal {...this.props}>
         <form className='form-horizontal'onSubmit={this.handleSubmit}>
-
-          <div className="modal-header">
-            <button className="close" aria-label="Close" style={{marginTop: '-2'}}>
-              <span aria-hidden="true">×</span>
-            </button>
-            <h4 className="modal-title">Create a group</h4>
-          </div>
-
-          <div className='modal-body'>
+          <B.Modal.Header closeButton onHide={this.props.onHide}>Create a group </B.Modal.Header>
+          <B.Modal.Body>
             <B.Input
               type='text'
               label='Name of the group'
@@ -79,12 +72,11 @@ var CreateGroupModal = React.createClass({
               ref='description'
               labelClassName='col-xs-4'
               wrapperClassName='col-xs-7' />
-          </div>
-
-          <div className='modal-footer'>
+          </B.Modal.Body>
+          <B.Modal.Footer>
             <B.Button type="submit">Submit</B.Button>
-            <B.Button >Close</B.Button>
-          </div>
+            <B.Button onClick={this.props.onHide}>Close</B.Button>
+          </B.Modal.Footer>
         </form>
       </B.Modal>
     );
