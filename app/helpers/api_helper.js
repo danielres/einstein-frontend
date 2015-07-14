@@ -52,13 +52,13 @@ var ApiHelper = {
       .set('Accept', 'application/json')
       .end(function(err, res){
         if(err){
-          console.log(err);
+          GroupsActions.create.failed(res.body);
         }else{
           res.group = res.body;
+          GroupsActions.create.completed();
           GroupsActions.load();
         }
       }.bind(that));
-
   },
 
   fetchPerson: function (personId, that) {

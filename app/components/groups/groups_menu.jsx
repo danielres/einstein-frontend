@@ -2,6 +2,7 @@
 
 var React = require('react')
 var B    = require('react-bootstrap')
+var _    = require('lodash')
 
 var GroupsActions = require('../../actions/groups_actions')
 
@@ -44,14 +45,58 @@ var FindGroupModal = React.createClass({
 });
 
 
+var FormErrorsComponent = React.createClass({
+  render: function () {
+    var errors = _.map(
+      this.props.errors, function(messages,key){
+        return  <div>
+                  <strong>{_.capitalize(key)}:</strong>
+                  <ul>
+                    {
+                      _.map(messages, function(m){
+                        return <li>{m}</li>
+                      })
+                    }
+                  </ul>
+                </div>
+      }
+    );
+    return (
+        <div>{ _.size(this.props.errors) != 0 && <B.Alert bsStyle='warning'>{errors}</B.Alert> }</div>
+    );
+  }
+});
+
+
 var CreateGroupModal = React.createClass({
+
+  getInitialState: function(){
+    return { errors: {} };
+  },
+
   handleSubmit: function(e){
     e.preventDefault();
     var params = {
              name: this.refs.name.getValue(),
       description: this.refs.description.getValue()
     };
-    GroupsActions.create(params);
+    GroupsActions.create(params)
+    this.handleSubmitResult();
+  },
+
+  handleSubmitResult: function(){
+    var that = this;
+    GroupsActions.create
+      .completed
+      .listen(function() {
+        that.props.onHide();
+      })
+
+    GroupsActions.create
+      .failed
+      .listen(function(errors) {
+        that.setState({ errors: errors });
+      }).bind(this);
   },
 
   render: function () {
@@ -60,6 +105,7 @@ var CreateGroupModal = React.createClass({
         <form className='form-horizontal'onSubmit={this.handleSubmit}>
           <B.Modal.Header closeButton onHide={this.props.onHide}>Create a group </B.Modal.Header>
           <B.Modal.Body>
+            <FormErrorsComponent errors={this.state.errors} />
             <B.Input
               type='text'
               label='Name of the group'
