@@ -49,6 +49,7 @@ module.exports = function(){
                 id: n,
                 name: groupNames[n],
                 description: faker.company.catchPhrase(),
+                owner: peopleSets[n][0],
                 members: peopleSets[n]
             }
         })
