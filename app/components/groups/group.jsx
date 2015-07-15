@@ -39,7 +39,7 @@ var Container = React.createClass({
 var PersonAvatarComponent = React.createClass({
   render: function(){
     var person = this.props.person;
-    var size   = this.props.size || 40;
+    var size   = this.props.size || 50;
 
     return(
       <Link to="person" params={{personId: person.id}}>
@@ -54,68 +54,90 @@ var Group = React.createClass({
   render: function() {
     var group = this.props.group;
     var owner = group.owner;
+    var discussions = group.discussions;
 
     return(
       <div>
 
         <B.PageHeader>
-
-          <B.Row >
-            <B.Col md={10}>
-              {group.name}<br /><small>{group.description}</small>
-            </B.Col>
-            <B.Col md={2}>
-              { owner &&  <PersonAvatarComponent person={owner} size={80} /> }
-            </B.Col>
-          </B.Row>
-
-
+          {group.name}<br /><small>{group.description}</small>
         </B.PageHeader>
 
 
-        <ul className="list-inline">
-          { group.members.map(function(member){
-            return( <li><PersonAvatarComponent person={member} /></li> )
-          })}
-        </ul>
-
-
-        <br />
-        <br />
-
-
         <B.Row >
-          <B.Col md={7}>
-            <h3>Discussions</h3>
+          <B.Col md={10}>
+            <h4>Members</h4>
+            <ul className="list-inline">
+              { group.members.map(function(member){
+                return( <li style={{ marginBottom: "10px"}}><PersonAvatarComponent person={member} /></li> )
+              })}
+            </ul>
           </B.Col>
-          <B.Col md={5} style={{ position: 'relative', bottom: '-17px' }}>
-            <B.Input type='text' addonBefore={<B.Glyphicon glyph='search' />} />
+          <B.Col md={2}>
+            <h4>Owner</h4>
+            { owner &&  <PersonAvatarComponent person={owner} size={60} /> }
           </B.Col>
         </B.Row>
 
 
-        <EmptyComment />
 
-        { group.members.map(function(m, i){
-          return (
-            <div>
-              <Comment author={group.members[3]} follow reply />
-              <Comment author={group.members[0]} follow reply>
-                <Comment author={group.members[1]} />
-                <Comment author={group.members[2]} />
-                <Comment author={group.members[3]} />
-              </Comment>
-              <Comment author={group.members[1]} follow reply />
-              <Comment author={group.members[3]} follow reply />
-            </div>
+
+        <B.Row >
+          <B.Col md={3}>
+            <br />
+            <B.Button className="pull-right" style={{ position: 'relative', top: '0' }}><B.Glyphicon glyph='plus' /></B.Button>
+            <DiscussionsListComponent discussions={discussions} />
+          </B.Col>
+          <B.Col md={9}>
+            <EmptyComment />
+            { group.members.map(function(m, i){
+              return (
+                <div>
+                  <Comment author={group.members[3]} follow reply />
+                  <Comment author={group.members[0]} follow reply>
+                    <Comment author={group.members[1]} />
+                  </Comment>
+                  <Comment author={group.members[1]} follow reply />
+                </div>
+              )
+            })}
+          </B.Col>
+        </B.Row>
+
+
+      </div>
+    );
+  }
+
+});
+
+
+var DiscussionsListComponent = React.createClass({
+  render: function() {
+    var discussions = this.props.discussions;
+    return(
+      <div>
+        { discussions && _.map(discussions, function(discussion, i){
+          return(
+            <B.ListGroupItem key={i} header={discussion.title}>
+              <Meta follow={true} reply={true} repost={true} />
+
+            </B.ListGroupItem>
           )
         })}
+      </div>
+    );
+  }
+});
+
+
+var DiscussionComponent = React.createClass({
+  render: function() {
+    var discussion = this.props.discussion;
+    return(
+      <div>
         <hr />
-
-
-
-
-
+        { discussion.title }
       </div>
     );
   }
