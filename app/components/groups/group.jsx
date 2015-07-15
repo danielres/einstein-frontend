@@ -36,6 +36,19 @@ var Container = React.createClass({
   }
 });
 
+var PersonAvatarComponent = React.createClass({
+  render: function(){
+    var person = this.props.person;
+    var size   = this.props.size || 40;
+
+    return(
+      <Link to="person" params={{personId: person.id}}>
+        <img src={person.avatar} className="img-circle" width={size} alt={person.name + ' avatar'} title={person.name} />
+      </Link>
+    );
+  }
+});
+
 
 var Group = React.createClass({
   render: function() {
@@ -52,11 +65,7 @@ var Group = React.createClass({
               {group.name}<br /><small>{group.description}</small>
             </B.Col>
             <B.Col md={2}>
-              { owner &&
-                <Link to="person" params={{personId: owner.id}}>
-                  <img src={owner.avatar} className="img-circle" width="80" alt={owner.name + ' avatar'} title={owner.name} />
-                </Link>
-              }
+              { owner &&  <PersonAvatarComponent person={owner} size={80} /> }
             </B.Col>
           </B.Row>
 
@@ -65,14 +74,8 @@ var Group = React.createClass({
 
 
         <ul className="list-inline">
-          { group.members.map(function(m, i){
-            return (
-              <li>
-                <Link to="person" params={{personId: m.id}}>
-                  <img src={m.avatar} style={{marginBottom: '10px'}} className="img-circle" width="40" alt={m.name + ' avatar'} title={m.name} />
-                </Link>
-              </li>
-            )
+          { group.members.map(function(member){
+            return( <li><PersonAvatarComponent person={member} /></li> )
           })}
         </ul>
 
