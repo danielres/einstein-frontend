@@ -63,32 +63,16 @@ var Group = React.createClass({
           {group.name}<br /><small>{group.description}</small>
         </B.PageHeader>
 
-
         <B.Row >
-          <B.Col md={10}>
+          <B.Col md={9}>
+
             <h4>Members</h4>
             <ul className="list-inline">
               { group.members.map(function(member){
                 return( <li style={{ marginBottom: "10px"}}><PersonAvatarComponent person={member} /></li> )
               })}
             </ul>
-          </B.Col>
-          <B.Col md={2}>
-            <h4>Owner</h4>
-            { owner &&  <PersonAvatarComponent person={owner} size={60} /> }
-          </B.Col>
-        </B.Row>
 
-
-
-
-        <B.Row >
-          <B.Col md={3}>
-            <br />
-            <B.Button className="pull-right" style={{ position: 'relative', top: '0' }}><B.Glyphicon glyph='plus' /></B.Button>
-            <DiscussionsListComponent discussions={discussions} />
-          </B.Col>
-          <B.Col md={9}>
             <EmptyComment />
             { group.members.map(function(m, i){
               return (
@@ -101,6 +85,12 @@ var Group = React.createClass({
                 </div>
               )
             })}
+          </B.Col>
+          <B.Col md={3}>
+            <DiscussionsListComponent discussions={discussions} />
+            <div className="text-right">
+              <B.Button bsSize="small"><B.Glyphicon glyph='plus' bsSize="small" /></B.Button>
+            </div>
           </B.Col>
         </B.Row>
 
@@ -119,10 +109,10 @@ var DiscussionsListComponent = React.createClass({
       <div>
         { discussions && _.map(discussions, function(discussion, i){
           return(
-            <B.ListGroupItem key={i} header={discussion.title}>
-              <Meta follow={true} reply={true} repost={true} />
-
-            </B.ListGroupItem>
+            <div>
+              {discussion.title}
+              <hr style={{ margin: "10px 0" }} />
+            </div>
           )
         })}
       </div>
@@ -131,18 +121,6 @@ var DiscussionsListComponent = React.createClass({
 });
 
 
-var DiscussionComponent = React.createClass({
-  render: function() {
-    var discussion = this.props.discussion;
-    return(
-      <div>
-        <hr />
-        { discussion.title }
-      </div>
-    );
-  }
-
-});
 
 var EmptyComment = React.createClass({
   render: function() {
