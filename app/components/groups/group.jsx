@@ -39,12 +39,30 @@ var Container = React.createClass({
 
 var Group = React.createClass({
   render: function() {
-    var group = this.props.group
-
+    var group = this.props.group;
+    var owner = group.owner;
 
     return(
       <div>
-        <B.PageHeader>{group.name}<br /><small>{group.description}</small></B.PageHeader>
+
+        <B.PageHeader>
+
+          <B.Row >
+            <B.Col md={10}>
+              {group.name}<br /><small>{group.description}</small>
+            </B.Col>
+            <B.Col md={2}>
+              { owner &&
+                <Link to="person" params={{personId: owner.id}}>
+                  <img src={owner.avatar} className="img-circle" width="80" alt={owner.name + ' avatar'} title={owner.name} />
+                </Link>
+              }
+            </B.Col>
+          </B.Row>
+
+
+        </B.PageHeader>
+
 
         <ul className="list-inline">
           { group.members.map(function(m, i){
