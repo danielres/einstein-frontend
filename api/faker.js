@@ -18,6 +18,14 @@ function fakePeopleGenerator(amount) {
 
 var people = fakePeopleGenerator(50);
 
+var groups_discussions = [
+    [
+        { id: 1, title: "General discussion", author: people[0] },
+        { id: 2, title: "Organization for next semester", author: people[1] },
+        { id: 3, title: "New ideas", author: people[2] }
+    ]
+];
+
 var peopleSets = [
     _.slice(people,  0,  4),
     _.slice(people, 10, 25),
@@ -50,7 +58,8 @@ module.exports = function(){
                 name: groupNames[n],
                 description: faker.company.catchPhrase(),
                 owner: peopleSets[n][0],
-                members: peopleSets[n]
+                members: peopleSets[n],
+                discussions: groups_discussions[0],
             }
         })
 
