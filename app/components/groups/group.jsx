@@ -9,10 +9,10 @@ var GroupStore   = require('../../stores/group_store')
 var Meta   = require('../meta')
 
 var B  = require('react-bootstrap')
-var Link  = require('react-router').Link
 
 var faker = require("faker");
 
+var PersonAvatar = require('../person_avatar');
 
 
 var Container = React.createClass({
@@ -32,19 +32,6 @@ var Container = React.createClass({
     var group = this.state.item;
     return(
       <Group group={group} />
-    );
-  }
-});
-
-var PersonAvatarComponent = React.createClass({
-  render: function(){
-    var person = this.props.person;
-    var size   = this.props.size || 50;
-
-    return(
-      <Link to="person" params={{personId: person.id}}>
-        <img src={person.avatar} className="img-circle" width={size} alt={person.name + ' avatar'} title={person.name} />
-      </Link>
     );
   }
 });
@@ -84,7 +71,7 @@ var Group = React.createClass({
                   { group.members.map(function(member){
                     return(
                       <li style={{ marginBottom: "10px"}}>
-                        <PersonAvatarComponent person={member} size={40} />
+                        <PersonAvatar person={member} size={40} />
                       </li>
                     )
                   })}
@@ -169,7 +156,7 @@ var Comment = React.createClass({
           <hr />
           <B.Row>
             <B.Col md={1}>
-              <PersonAvatarComponent person={author} size={40} />
+              <PersonAvatar person={author} size={40} />
             </B.Col>
             <B.Col md={10}>
               { faker.lorem.sentences(3)}
