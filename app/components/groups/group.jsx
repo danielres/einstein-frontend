@@ -58,21 +58,19 @@ var Group = React.createClass({
 
     return(
       <div>
-
         <B.PageHeader>
           {group.name}<br /><small>{group.description}</small>
         </B.PageHeader>
 
         <B.Row >
-          <B.Col md={9}>
+          <B.Col md={2}>
+            <DiscussionsListComponent discussions={discussions} />
+            <div className="text-left">
+              <B.Button bsSize="small"><B.Glyphicon glyph='plus' bsSize="small" /></B.Button>
+            </div>
+          </B.Col>
 
-            <h4>Members</h4>
-            <ul className="list-inline">
-              { group.members.map(function(member){
-                return( <li style={{ marginBottom: "10px"}}><PersonAvatarComponent person={member} /></li> )
-              })}
-            </ul>
-
+          <B.Col md={8}>
             <EmptyComment />
             { group.members.map(function(m, i){
               return (
@@ -86,15 +84,20 @@ var Group = React.createClass({
               )
             })}
           </B.Col>
-          <B.Col md={3}>
-            <DiscussionsListComponent discussions={discussions} />
-            <div className="text-right">
-              <B.Button bsSize="small"><B.Glyphicon glyph='plus' bsSize="small" /></B.Button>
-            </div>
+
+          <B.Col md={2} style={{ textAlign: "right"}}>
+            <ul className="list-inline">
+              { group.members.map(function(member){
+                return(
+                  <li style={{ marginBottom: "10px"}}>
+                    <PersonAvatarComponent person={member} size={40} />
+                  </li>
+                )
+              })}
+            </ul>
           </B.Col>
+
         </B.Row>
-
-
       </div>
     );
   }
@@ -128,7 +131,6 @@ var EmptyComment = React.createClass({
       var name   = faker.name.findName();
     return(
       <div>
-          <hr />
           <B.Row>
             <B.Col md={1}>
               <img src={avatar} className="img-circle" width="40" alt={name + ' avatar'} title={name} />
@@ -152,9 +154,7 @@ var Comment = React.createClass({
           <hr />
           <B.Row>
             <B.Col md={1}>
-                <Link to="person" params={{personId: author.id}}>
-                  <img src={author.avatar} style={{marginBottom: '10px'}} className="img-circle" width="40" alt={author.name + ' avatar'} title={author.name} />
-                </Link>
+              <PersonAvatarComponent person={author} size={40} />
             </B.Col>
             <B.Col md={10}>
               { faker.lorem.sentences(3)}
