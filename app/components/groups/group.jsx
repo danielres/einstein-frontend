@@ -58,46 +58,61 @@ var Group = React.createClass({
 
     return(
       <div>
-        <B.PageHeader>
-          {group.name}<br /><small>{group.description}</small>
-        </B.PageHeader>
 
         <B.Row >
-          <B.Col md={2}>
-            <DiscussionsListComponent discussions={discussions} />
-            <div className="text-left">
-              <B.Button bsSize="small"><B.Glyphicon glyph='plus' bsSize="small" /></B.Button>
-            </div>
-          </B.Col>
+          <B.Col md={12}>
+            <br />
+            <B.PageHeader>
+              {group.name}<br /><small>{group.description}</small>
+            </B.PageHeader>
 
-          <B.Col md={8}>
-            <EmptyComment />
-            { group.members.map(function(m, i){
-              return (
+            <B.Row >
+              <B.Col md={3}>
+                <DiscussionsListComponent discussions={discussions} />
                 <div>
-                  <Comment author={group.members[3]} follow reply />
-                  <Comment author={group.members[0]} follow reply>
-                    <Comment author={group.members[1]} />
-                  </Comment>
-                  <Comment author={group.members[1]} follow reply />
+                  <B.Button bsSize="xsmall">
+                    <B.Glyphicon glyph='plus' bsSize="xsmall" />
+                  </B.Button>
                 </div>
-              )
-            })}
-          </B.Col>
 
-          <B.Col md={2} style={{ textAlign: "right"}}>
-            <ul className="list-inline">
-              { group.members.map(function(member){
-                return(
-                  <li style={{ marginBottom: "10px"}}>
-                    <PersonAvatarComponent person={member} size={40} />
-                  </li>
-                )
-              })}
-            </ul>
-          </B.Col>
+                <br />
+                <br />
+                <br />
 
-        </B.Row>
+                <p className="text-muted">Members</p>
+                <ul className="list-inline" style={{ padding: "0 30px 0 0" }}>
+                  { group.members.map(function(member){
+                    return(
+                      <li style={{ marginBottom: "10px"}}>
+                        <PersonAvatarComponent person={member} size={40} />
+                      </li>
+                    )
+                  })}
+                </ul>
+              </B.Col>
+
+              <B.Col md={9}>
+                <EmptyComment />
+                { group.members.map(function(m, i){
+                  return (
+                    <div>
+                      <Comment author={group.members[3]} follow reply />
+                      <Comment author={group.members[0]} follow reply>
+                        <Comment author={group.members[1]} />
+                      </Comment>
+                      <Comment author={group.members[1]} follow reply />
+                    </div>
+                  )
+                })}
+              </B.Col>
+            </B.Row>
+
+          </B.Col>
+        </B.Row >
+
+
+
+
       </div>
     );
   }
