@@ -19,10 +19,10 @@ var Groups = React.createClass({
 
     return (
       <B.Row>
-        <B.Col md={9}>
+        <B.Col md={10}>
           { groupId && <Group groupId={groupId} /> || <GroupsDashboard /> }
         </B.Col>
-        <B.Col md={3}>
+        <B.Col md={2}>
           <GroupsMenu />
           <GroupsList />
         </B.Col>
