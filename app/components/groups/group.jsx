@@ -13,6 +13,7 @@ var B  = require('react-bootstrap')
 var faker = require("faker");
 
 var PersonAvatar = require('../person_avatar');
+var DiscussionsList = require('../discussions/discussions_list');
 
 
 var Container = React.createClass({
@@ -55,7 +56,7 @@ var Group = React.createClass({
 
             <B.Row >
               <B.Col md={3}>
-                <DiscussionsListComponent discussions={discussions} />
+                <DiscussionsList discussions={discussions} />
                 <div>
                   <B.Button bsSize="xsmall">
                     <B.Glyphicon glyph='plus' bsSize="xsmall" />
@@ -105,26 +106,6 @@ var Group = React.createClass({
   }
 
 });
-
-
-var DiscussionsListComponent = React.createClass({
-  render: function() {
-    var discussions = this.props.discussions;
-    return(
-      <div>
-        { discussions && _.map(discussions, function(discussion, i){
-          return(
-            <div>
-              {discussion.title}
-              <hr style={{ margin: "10px 0" }} />
-            </div>
-          )
-        })}
-      </div>
-    );
-  }
-});
-
 
 
 var EmptyComment = React.createClass({
