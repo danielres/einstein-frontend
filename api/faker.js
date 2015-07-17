@@ -20,7 +20,18 @@ function fakeDiscussionsGenerator(amount) {
             return {
                 id: n,
                 title: faker.company.catchPhrase(),
-                author: people[n]
+                author: people[n],
+                entries: [
+                    { id: 1, author: people[1], body: faker.lorem.sentences(),
+                        entries: [
+                            { id: 11, author: people[6], body: faker.lorem.sentences() }
+                        ]
+                    },
+                    { id: 2, author: people[2], body: faker.lorem.sentences() },
+                    { id: 3, author: people[3], body: faker.lorem.sentences() },
+                    { id: 4, author: people[4], body: faker.lorem.sentences() },
+                    { id: 5, author: people[5], body: faker.lorem.sentences() }
+                ]
             }
         })
 };
