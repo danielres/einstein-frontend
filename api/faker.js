@@ -75,7 +75,8 @@ module.exports = function(){
                 members: peopleSets[n],
                 discussions: discussionsSets[n],
             }
-        })
+        }),
+        discussions: discussions
 
     }
 }();
