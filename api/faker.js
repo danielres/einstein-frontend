@@ -15,16 +15,19 @@ function fakePeopleGenerator(amount) {
             }
         })
 };
+function fakeDiscussionsGenerator(amount) {
+    return _.times(amount, function (n) {
+            return {
+                id: n,
+                title: faker.company.catchPhrase(),
+                author: people[n]
+            }
+        })
+};
 
 var people = fakePeopleGenerator(50);
+var discussions = fakeDiscussionsGenerator(50);
 
-var groups_discussions = [
-    [
-        { id: 1, title: "General discussion", author: people[0] },
-        { id: 2, title: "Organization for next semester", author: people[1] },
-        { id: 3, title: "New ideas", author: people[2] }
-    ]
-];
 
 var peopleSets = [
     _.slice(people,  0,  4),
@@ -35,6 +38,17 @@ var peopleSets = [
     _.slice(people, 13, 25),
     _.slice(people, 22, 43),
     _.slice(people,  3, 25),
+]
+
+var discussionsSets = [
+    _.slice(discussions,  0,  4),
+    _.slice(discussions, 5, 14),
+    _.slice(discussions, 15, 23),
+    _.slice(discussions,  23, 24),
+    _.slice(discussions, 25, 40),
+    _.slice(discussions, 0, 25),
+    _.slice(discussions, 26, 34),
+    _.slice(discussions,  35, 49),
 ]
 
 var groupNames = [
@@ -59,7 +73,7 @@ module.exports = function(){
                 description: faker.company.catchPhrase(),
                 owner: peopleSets[n][0],
                 members: peopleSets[n],
-                discussions: groups_discussions[0],
+                discussions: discussionsSets[n],
             }
         })
 
