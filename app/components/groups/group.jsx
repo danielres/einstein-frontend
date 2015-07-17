@@ -17,23 +17,34 @@ var DiscussionsList = require('../discussions/discussions_list');
 var Discussion = require('../discussions/discussion');
 
 
-var Container = React.createClass({
-  mixins: [Reflux.connect(GroupStore, "item")],
-  contextTypes: {
-    router: React.PropTypes.func
-  },
-  componentWillMount: function () {
-    var groupId = this.context.router.getCurrentParams().groupId;
-    GroupActions.load(groupId);
-  },
-  componentWillReceiveProps: function () {
-    var groupId = this.context.router.getCurrentParams().groupId;
-    GroupActions.load(groupId);
-  },
+var RouteHandler = React.createClass({
+  contextTypes: { router: React.PropTypes.func },
+
   render: function() {
-    var group = this.state.item;
+    var groupId      = this.context.router.getCurrentParams().groupId;
     var discussionId = this.context.router.getCurrentParams().discussionId;
 
+    return (
+      <GroupLoader groupId={groupId} discussionId={discussionId} />
+    );
+  }
+});
+
+
+var GroupLoader = React.createClass({
+  mixins: [Reflux.connect(GroupStore, "item")],
+
+  componentWillMount: function () {
+    GroupActions.load(this.props.groupId);
+  },
+
+  componentWillReceiveProps: function () {
+    GroupActions.load(this.props.groupId);
+  },
+
+  render: function() {
+    var group = this.state.item;
+    var discussionId = this.props.discussionId;
     return(
       <Group group={group} discussionId={discussionId} />
     );
@@ -95,4 +106,4 @@ var Group = React.createClass({
 });
 
 
-module.exports = Container;
+module.exports = RouteHandler;
