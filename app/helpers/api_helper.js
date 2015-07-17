@@ -23,6 +23,9 @@ var ENDPOINTS = {
   createGroup:
     FAKE_API_URL,
     // REAL_API_URL + "/api/v1",
+  fetchDiscussion:
+    FAKE_API_URL,
+    // NOT YET IMPLEMENTED IN REAL BACKEND,
   fetchPerson:
     FAKE_API_URL,
 }
@@ -58,6 +61,14 @@ var ApiHelper = {
           GroupsActions.create.completed();
           GroupsActions.load();
         }
+      }.bind(that));
+  },
+
+  fetchDiscussion: function (discussionId, that) {
+    request
+      .get(ENDPOINTS.fetchDiscussion + '/discussions/' + discussionId, function (err, res) {
+        that.discussion = res.body;
+        that.trigger(that.discussion);
       }.bind(that));
   },
 

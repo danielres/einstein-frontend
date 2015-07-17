@@ -15,6 +15,7 @@ var Dashboard   = require('./components/dashboard')
 var Placeholder = require('./components/placeholder')
 var Inbox       = require('./components/inbox')
 var Groups      = require('./components/groups')
+var Discussion  = require('./components/discussions/discussion')
 var Person      = require('./components/person')
 var UserProfile = require('./components/user_profile')
 
@@ -52,7 +53,9 @@ var routes = (
     <Route name="dashboard"    handler={Dashboard}    path="dashboard" />
     <Route name="inbox"        handler={Inbox}        path="inbox" />
     <Route name="groups"       handler={Groups}       path="groups">
-      <Route name="group"      handler={Groups.Group} path=":groupId" />
+      <Route name="group"      handler={Groups.Group} path=":groupId">
+        <Route name="discussion" handler={Discussion} path="discussions/:discussionId" />
+      </Route>
     </Route>
     <Route name="fast_news"    handler={Placeholder}  path="fast_news" />
     <Route name="open_courses" handler={Placeholder}  path="open_courses" />

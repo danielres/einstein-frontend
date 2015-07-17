@@ -14,6 +14,7 @@ var faker = require("faker");
 
 var PersonAvatar = require('../person_avatar');
 var DiscussionsList = require('../discussions/discussions_list');
+var Discussion = require('../discussions/discussion');
 
 
 var Container = React.createClass({
@@ -31,8 +32,10 @@ var Container = React.createClass({
   },
   render: function() {
     var group = this.state.item;
+    var discussionId = this.context.router.getCurrentParams().discussionId;
+
     return(
-      <Group group={group} />
+      <Group group={group} discussionId={discussionId} />
     );
   }
 });
@@ -43,10 +46,9 @@ var Group = React.createClass({
     var group = this.props.group;
     var owner = group.owner;
     var discussions = group.discussions;
-
+    var discussionId = this.props.discussionId;
     return(
       <div>
-
         <B.Row >
           <B.Col md={12}>
             <br />
@@ -80,71 +82,12 @@ var Group = React.createClass({
               </B.Col>
 
               <B.Col md={9}>
-                <EmptyComment />
-                { group.members.map(function(m, i){
-                  return (
-                    <div>
-                      <Comment author={group.members[3]} follow reply />
-                      <Comment author={group.members[0]} follow reply>
-                        <Comment author={group.members[1]} />
-                      </Comment>
-                      <Comment author={group.members[1]} follow reply />
-                    </div>
-                  )
-                })}
+                <Discussion discussionId={discussionId} />
               </B.Col>
             </B.Row>
 
           </B.Col>
         </B.Row >
-
-
-
-
-      </div>
-    );
-  }
-
-});
-
-
-var EmptyComment = React.createClass({
-  render: function() {
-      var avatar = faker.internet.avatar();
-      var name   = faker.name.findName();
-    return(
-      <div>
-          <B.Row>
-            <B.Col md={1}>
-              <img src={avatar} className="img-circle" width="40" alt={name + ' avatar'} title={name} />
-            </B.Col>
-            <B.Col md={11} style={{ textAlign: 'right'}}>
-              <textarea style={{ width: '100%' }} rows="3" name="" id=""></textarea>
-              <B.Button bsStyle='primary'>post</B.Button>
-            </B.Col>
-          </B.Row>
-      </div>
-    );
-  }
-
-});
-
-var Comment = React.createClass({
-  render: function() {
-      var author = this.props.author;
-    return(
-      <div>
-          <hr />
-          <B.Row>
-            <B.Col md={1}>
-              <PersonAvatar person={author} size={40} />
-            </B.Col>
-            <B.Col md={10}>
-              { faker.lorem.sentences(3)}
-              <Meta follow={ this.props.follow } reply={ this.props.reply } repost={ this.props.repost } />
-              {this.props.children}
-            </B.Col>
-          </B.Row>
       </div>
     );
   }
