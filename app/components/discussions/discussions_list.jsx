@@ -1,7 +1,8 @@
 'use strict';
 
 var React = require('react')
-var R    = require('react-router')
+var RB   = require('react-router-bootstrap')
+
 
 var DiscussionsList = React.createClass({
  contextTypes: {
@@ -12,22 +13,18 @@ var DiscussionsList = React.createClass({
     var discussions = this.props.discussions;
     var currentGroupId = this.context.router.getCurrentParams().groupId;
     return(
-      <div>
+      <ul className="nav nav-muted">
         { discussions && _.map(discussions, function(discussion, i){
           return(
-            <div>
-              <R.Link
-                style={{ border: "none" }}
-                to="discussion"
-                key={i}
-                params={{discussionId: discussion.id, groupId: currentGroupId}}>
-                  {discussion.title}
-              </R.Link>
-              <hr style={{ margin: "15px 0" }} />
-            </div>
+            <RB.ListGroupItemLink
+              to="discussion"
+              key={i}
+              params={{discussionId: discussion.id, groupId: currentGroupId}}>
+                {discussion.title}
+            </RB.ListGroupItemLink>
           )
         })}
-      </div>
+      </ul>
     );
   }
 });
