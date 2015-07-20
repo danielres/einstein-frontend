@@ -82,7 +82,10 @@ var Group = React.createClass({
               </B.Col>
 
               <B.Col md={9}>
-                <Discussion discussionId={discussionId} />
+                { discussionId ?
+                  <Discussion discussionId={discussionId} />
+                  : <GroupDashboard />
+                }
               </B.Col>
             </B.Row>
 
@@ -94,5 +97,18 @@ var Group = React.createClass({
 
 });
 
+var GroupDashboard = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <h3>Recent activity</h3>
+        <ul>
+          <li>[Latests conversations]</li>
+          <li>[Latests documents]</li>
+        </ul>
+      </div>
+    );
+  }
+});
 
 module.exports = Container;
