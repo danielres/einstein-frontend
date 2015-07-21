@@ -34,7 +34,9 @@ var ENDPOINTS = {
 var ApiHelper = {
   fetchGroups: function (that) {
     request
-      .get(ENDPOINTS.fetchGroups + "/groups", function (err, res) {
+      .get(ENDPOINTS.fetchGroups + "/groups")
+      .set('Authorization', sessionStorage.getItem('access_token'))
+      .end(function (err, res) {
         that.list =  res.body;
         that.trigger(that.list);
       }.bind(that));
@@ -42,7 +44,9 @@ var ApiHelper = {
 
   fetchGroup: function (groupId, that) {
     request
-      .get(ENDPOINTS.fetchGroup + '/groups/' + groupId, function (err, res) {
+      .get(ENDPOINTS.fetchGroup + '/groups/' + groupId)
+      .set('Authorization', sessionStorage.getItem('access_token'))
+      .end(function (err, res) {
         that.item = res.body;
         that.trigger(that.item);
       }.bind(that));
@@ -53,6 +57,7 @@ var ApiHelper = {
       .post(ENDPOINTS.createGroup + '/groups/')
       .send(params)
       .set('Accept', 'application/json')
+      .set('Authorization', sessionStorage.getItem('access_token'))
       .end(function(err, res){
         if(err){
           GroupsActions.create.failed(res.body);
@@ -66,7 +71,9 @@ var ApiHelper = {
 
   fetchDiscussion: function (discussionId, that) {
     request
-      .get(ENDPOINTS.fetchDiscussion + '/discussions/' + discussionId, function (err, res) {
+      .get(ENDPOINTS.fetchDiscussion + '/discussions/' + discussionId)
+      .set('Authorization', sessionStorage.getItem('access_token'))
+      .end(function (err, res) {
         that.discussion = res.body;
         that.trigger(that.discussion);
       }.bind(that));
@@ -74,7 +81,9 @@ var ApiHelper = {
 
   fetchPerson: function (personId, that) {
     request
-      .get(ENDPOINTS.fetchPerson + '/people/' + personId, function (err, res) {
+      .get(ENDPOINTS.fetchPerson + '/people/' + personId)
+      .set('Authorization', sessionStorage.getItem('access_token'))
+      .end(function (err, res) {
         that.item = res.body;
         that.trigger(that.item);
       }.bind(that));
