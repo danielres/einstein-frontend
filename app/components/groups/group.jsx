@@ -83,7 +83,7 @@ var Group = React.createClass({
 
               <B.Col md={9}>
                 { discussionId ?
-                  <Discussion discussionId={discussionId} />
+                  <Discussion groupId={group.id} discussionId={discussionId} />
                   : <GroupDashboard />
                 }
               </B.Col>

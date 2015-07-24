@@ -23,9 +23,9 @@ var ENDPOINTS = {
   createGroup:
     FAKE_API_URL,
     // REAL_API_URL + "/api/v1",
-  fetchDiscussion:
+  fetchGroupDiscussion:
     FAKE_API_URL,
-    // NOT YET IMPLEMENTED IN REAL BACKEND,
+    // REAL_API_URL + "/api/v1",
   fetchPerson:
     FAKE_API_URL,
 }
@@ -69,9 +69,9 @@ var ApiHelper = {
       }.bind(that));
   },
 
-  fetchDiscussion: function (discussionId, that) {
+  fetchGroupDiscussion: function (groupId, discussionId, that) {
     request
-      .get(ENDPOINTS.fetchDiscussion + '/discussions/' + discussionId)
+      .get(ENDPOINTS.fetchGroupDiscussion + "/groups/" + groupId + "/discussions/" + discussionId)
       .set('Authorization', sessionStorage.getItem('access_token'))
       .end(function (err, res) {
         that.discussion = res.body;
