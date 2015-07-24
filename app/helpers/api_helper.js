@@ -15,17 +15,17 @@ var ENDPOINTS = {
     FAKE_API_URL,
     // REAL_API_URL,
   fetchGroup:
-    FAKE_API_URL,
-    // REAL_API_URL + "/api/v1",
+    // SUPPORT REMOVED IN FAKE API,
+    REAL_API_URL + "/api/v1",
   fetchGroups:
-    FAKE_API_URL,
-    // REAL_API_URL + "/api/v1",
+    // SUPPORT REMOVED IN FAKE API,
+    REAL_API_URL + "/api/v1",
   createGroup:
-    FAKE_API_URL,
-    // REAL_API_URL + "/api/v1",
+    // SUPPORT REMOVED IN FAKE API,
+    REAL_API_URL + "/api/v1",
   fetchGroupDiscussion:
-    FAKE_API_URL,
-    // REAL_API_URL + "/api/v1",
+    // SUPPORT REMOVED IN FAKE API,
+    REAL_API_URL + "/api/v1",
   fetchPerson:
     FAKE_API_URL,
 }
