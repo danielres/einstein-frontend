@@ -121,7 +121,6 @@ var CreateGroupModal = React.createClass({
           </B.Modal.Body>
           <B.Modal.Footer>
             <B.Button type="submit">Submit</B.Button>
-            <B.Button onClick={this.props.onHide}>Close</B.Button>
           </B.Modal.Footer>
         </form>
       </B.Modal>
