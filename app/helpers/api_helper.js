@@ -2,10 +2,14 @@
 
 var request = require('superagent');
 var GroupsActions = require('../actions/groups_actions');
-
+var DiscussionsActions = require('../actions/discussions_actions');
+var GroupActions = require('../actions/group_actions');
 var FAKE_API_URL = window.location.href.includes(":8080/") ? 'http://localhost:3001' : '/api/fake';
 var REAL_API_URL = 'http://localhost:3000';
 
+function urlize(type){
+  return { "Group": "groups" }[type];
+}
 
 var ENDPOINTS = {
   signIn:
@@ -22,6 +26,9 @@ var ENDPOINTS = {
     REAL_API_URL + "/api/v1",
   createGroup:
     // SUPPORT REMOVED IN FAKE API,
+    REAL_API_URL + "/api/v1",
+  createDiscussion:
+    // SUPPORT NOT AVAILABLE IN FAKE API,
     REAL_API_URL + "/api/v1",
   fetchGroupDiscussion:
     // SUPPORT REMOVED IN FAKE API,
@@ -76,6 +83,28 @@ var ApiHelper = {
       .end(function (err, res) {
         that.discussion = res.body;
         that.trigger(that.discussion);
+      }.bind(that));
+  },
+
+  createDiscussion: function (params, that) {
+    request
+      .post(ENDPOINTS.createDiscussion
+              + "/"+ urlize(params["discutable_type"])
+              + "/"+ params["discutable_id"]
+              + "/discussions/")
+      .send(params)
+      .set('Accept', 'application/json')
+      .set('Authorization', sessionStorage.getItem('access_token'))
+      .end(function(err, res){
+        if(err){
+          DiscussionsActions.create.failed(res.body);
+        }else{
+          res.discussion = res.body;
+          DiscussionsActions.create.completed();
+          // DiscussionsActions.load();
+          GroupActions.load(params["discutable_id"]);
+          console.log(params["discutable_id"]);
+        }
       }.bind(that));
   },
 

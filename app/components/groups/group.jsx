@@ -13,6 +13,7 @@ var B  = require('react-bootstrap')
 var faker = require("faker");
 
 var PersonAvatar = require('../person_avatar');
+var DiscussionsMenu = require('../discussions/discussions_menu');
 var DiscussionsList = require('../discussions/discussions_list');
 var Discussion = require('../discussions/discussion');
 
@@ -58,13 +59,8 @@ var Group = React.createClass({
 
             <B.Row >
               <B.Col md={3}>
+                <DiscussionsMenu discutable_type="Group" discutable_id={group.id} />
                 <DiscussionsList discussions={discussions} />
-                <div>
-                  <B.Button bsSize="xsmall">
-                    <B.Glyphicon glyph='plus' bsSize="xsmall" />
-                  </B.Button>
-                </div>
-
                 <br />
                 <br />
                 <br />
