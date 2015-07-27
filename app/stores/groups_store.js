@@ -10,16 +10,12 @@ module.exports = Reflux.createStore({
 
   listenables: [GroupsActions],
 
-  init: function () {
-    this.listenTo(GroupsActions.load, this.fetchData);
-  },
-
   getInitialState: function () {
     this.list = [];
     return this.list;
   },
 
-  fetchData: function () {
+  onLoad: function () {
     ApiHelper.fetchGroups(this);
   },
 
