@@ -32,6 +32,12 @@ module.exports = Reflux.createStore({
     return this.user;
   },
 
+  onAccessCompleted: function (result) {
+    this.user = result;
+    this.user.logged = true;
+    this.trigger(this.user);
+  },
+
   onLogout: function () {
     this.getInitialState();
     sessionStorage.removeItem('access_token');

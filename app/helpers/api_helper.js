@@ -134,7 +134,7 @@ var ApiHelper = {
       });
   },
 
-  access: function (caller) {
+  access: function () {
     request
       .post(ENDPOINTS.access + '/login/')
       .set('Authorization', sessionStorage.getItem('access_token'))
@@ -143,12 +143,9 @@ var ApiHelper = {
         if(err){
           console.log(err);
         }else{
-          caller.user = res.body;
-          caller.user.logged = true;
-          caller.trigger(caller.user);
-          sessionStorage.setItem('access_token', caller.user.access_token);
+          SessionActions.access.completed(res.body);
         }
-      }.bind(caller));
+      });
   }
 
 };
