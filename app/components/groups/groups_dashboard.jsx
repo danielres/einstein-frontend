@@ -18,7 +18,7 @@ var Container = React.createClass({
   //   router: React.PropTypes.func
   // },
   componentDidMount: function () {
-      GroupsActions.load();
+      GroupsActions.fetch();
   },
   render: function() {
     // var groups  = this.state.list;

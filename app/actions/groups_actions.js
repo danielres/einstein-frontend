@@ -3,7 +3,7 @@
 var Reflux  = require('reflux');
 
 var GroupsActions = Reflux.createActions({
-  load: {},
+  fetch: { children: ["completed","failed"]},
   create: { children: ["completed","failed"]}
 });
 

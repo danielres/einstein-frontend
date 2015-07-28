@@ -39,14 +39,17 @@ var ENDPOINTS = {
 
 
 var ApiHelper = {
-  fetchGroups: function (caller) {
+  fetchGroups: function () {
     request
       .get(ENDPOINTS.fetchGroups + "/groups")
       .set('Authorization', sessionStorage.getItem('access_token'))
       .end(function (err, res) {
-        caller.list =  res.body;
-        caller.trigger(caller.list);
-      }.bind(caller));
+        if(err){
+          console.log(err);
+        }else{
+          GroupsActions.fetch.completed(res.body)
+        }
+      });
   },
 
   fetchGroup: function (groupId) {

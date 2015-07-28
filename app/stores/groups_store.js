@@ -14,8 +14,12 @@ module.exports = Reflux.createStore({
     return [];
   },
 
-  onLoad: function () {
-    ApiHelper.fetchGroups(this);
+  onFetch: function () {
+    ApiHelper.fetchGroups();
+  },
+
+  onFetchCompleted: function (result) {
+    this.trigger(result);
   },
 
   onCreate: function (params) {
@@ -23,7 +27,7 @@ module.exports = Reflux.createStore({
   },
 
   onCreateCompleted: function() {
-    this.onLoad();
+    this.onFetch();
   },
 
 });
