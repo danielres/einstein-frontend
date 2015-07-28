@@ -90,7 +90,7 @@ var ApiHelper = {
       }.bind(caller));
   },
 
-  createDiscussion: function (params, caller) {
+  createDiscussion: function (params) {
     request
       .post(ENDPOINTS.createDiscussion
               + "/"+ urlize(params["discutable_type"])
@@ -103,13 +103,9 @@ var ApiHelper = {
         if(err){
           DiscussionsActions.create.failed(res.body);
         }else{
-          res.discussion = res.body;
-          DiscussionsActions.create.completed();
-          // DiscussionsActions.load();
-          GroupActions.fetch(params["discutable_id"]);
-          console.log(params["discutable_id"]);
+          DiscussionsActions.create.completed(res.body);
         }
-      }.bind(caller));
+      });
   },
 
   fetchPerson: function (personId, caller) {
