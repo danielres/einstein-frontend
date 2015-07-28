@@ -4,6 +4,8 @@ var request = require('superagent');
 var GroupsActions = require('../actions/groups_actions');
 var DiscussionsActions = require('../actions/discussions_actions');
 var GroupActions = require('../actions/group_actions');
+var SessionActions = require('../actions/session_actions');
+
 var FAKE_API_URL = window.location.href.includes(":8080/") ? 'http://localhost:3001' : '/api/fake';
 var REAL_API_URL = 'http://localhost:3000';
 
@@ -118,7 +120,7 @@ var ApiHelper = {
       }.bind(caller));
   },
 
-  signIn: function (username, password, caller) {
+  signIn: function (username, password) {
     request
       .post(ENDPOINTS.signIn + '/login/')
       .send({ username: username, password: password })
@@ -127,12 +129,9 @@ var ApiHelper = {
         if(err){
           console.log(err);
         }else{
-          caller.user = res.body;
-          caller.user.logged = true;
-          caller.trigger(caller.user);
-          sessionStorage.setItem('access_token', caller.user.access_token);
+          SessionActions.login.completed(res.body);
         }
-      }.bind(caller));
+      });
   },
 
   access: function (caller) {

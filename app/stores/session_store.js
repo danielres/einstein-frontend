@@ -16,8 +16,14 @@ module.exports = Reflux.createStore({
   },
 
   onLogin: function (email, password) {
-    ApiHelper.signIn(email, password, this);
-    return this.user;
+    ApiHelper.signIn(email, password);
+  },
+
+  onLoginCompleted: function (result) {
+    this.user = result;
+    this.user.logged = true;
+    sessionStorage.setItem('access_token', this.user.access_token);
+    this.trigger(this.user);
   },
 
   onAccess: function () {
