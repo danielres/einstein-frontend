@@ -67,7 +67,7 @@ var Group = React.createClass({
 
                 <p className="text-muted">Members</p>
                 <ul className="list-inline" style={{ padding: "0 30px 0 0" }}>
-                  { group.members.map(function(member){
+                  { group.members && group.members.map(function(member){
                     return(
                       <li style={{ marginBottom: "10px"}}>
                         <PersonAvatar person={member} size={40} />

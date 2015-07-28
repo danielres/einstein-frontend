@@ -11,7 +11,7 @@ module.exports = Reflux.createStore({
   listenables: [GroupActions],
 
   getInitialState: function () {
-    return { members: [] };
+    return {};
   },
 
   onFetch: function (groupId) {
