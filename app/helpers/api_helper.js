@@ -39,27 +39,27 @@ var ENDPOINTS = {
 
 
 var ApiHelper = {
-  fetchGroups: function (that) {
+  fetchGroups: function (caller) {
     request
       .get(ENDPOINTS.fetchGroups + "/groups")
       .set('Authorization', sessionStorage.getItem('access_token'))
       .end(function (err, res) {
-        that.list =  res.body;
-        that.trigger(that.list);
-      }.bind(that));
+        caller.list =  res.body;
+        caller.trigger(caller.list);
+      }.bind(caller));
   },
 
-  fetchGroup: function (groupId, that) {
+  fetchGroup: function (groupId, caller) {
     request
       .get(ENDPOINTS.fetchGroup + '/groups/' + groupId)
       .set('Authorization', sessionStorage.getItem('access_token'))
       .end(function (err, res) {
-        that.item = res.body;
-        that.trigger(that.item);
-      }.bind(that));
+        caller.item = res.body;
+        caller.trigger(caller.item);
+      }.bind(caller));
   },
 
-  createGroup: function (params, that) {
+  createGroup: function (params, caller) {
     request
       .post(ENDPOINTS.createGroup + '/groups/')
       .send(params)
@@ -73,20 +73,20 @@ var ApiHelper = {
           GroupsActions.create.completed();
           GroupsActions.load();
         }
-      }.bind(that));
+      }.bind(caller));
   },
 
-  fetchGroupDiscussion: function (groupId, discussionId, that) {
+  fetchGroupDiscussion: function (groupId, discussionId, caller) {
     request
       .get(ENDPOINTS.fetchGroupDiscussion + "/groups/" + groupId + "/discussions/" + discussionId)
       .set('Authorization', sessionStorage.getItem('access_token'))
       .end(function (err, res) {
-        that.discussion = res.body;
-        that.trigger(that.discussion);
-      }.bind(that));
+        caller.discussion = res.body;
+        caller.trigger(caller.discussion);
+      }.bind(caller));
   },
 
-  createDiscussion: function (params, that) {
+  createDiscussion: function (params, caller) {
     request
       .post(ENDPOINTS.createDiscussion
               + "/"+ urlize(params["discutable_type"])
@@ -105,20 +105,20 @@ var ApiHelper = {
           GroupActions.load(params["discutable_id"]);
           console.log(params["discutable_id"]);
         }
-      }.bind(that));
+      }.bind(caller));
   },
 
-  fetchPerson: function (personId, that) {
+  fetchPerson: function (personId, caller) {
     request
       .get(ENDPOINTS.fetchPerson + '/people/' + personId)
       .set('Authorization', sessionStorage.getItem('access_token'))
       .end(function (err, res) {
-        that.item = res.body;
-        that.trigger(that.item);
-      }.bind(that));
+        caller.item = res.body;
+        caller.trigger(caller.item);
+      }.bind(caller));
   },
 
-  signIn: function (username, password, that) {
+  signIn: function (username, password, caller) {
     request
       .post(ENDPOINTS.signIn + '/login/')
       .send({ username: username, password: password })
@@ -127,15 +127,15 @@ var ApiHelper = {
         if(err){
           console.log(err);
         }else{
-          that.user = res.body;
-          that.user.logged = true;
-          that.trigger(that.user);
-          sessionStorage.setItem('access_token', that.user.access_token);
+          caller.user = res.body;
+          caller.user.logged = true;
+          caller.trigger(caller.user);
+          sessionStorage.setItem('access_token', caller.user.access_token);
         }
-      }.bind(that));
+      }.bind(caller));
   },
 
-  access: function (that) {
+  access: function (caller) {
     request
       .post(ENDPOINTS.access + '/login/')
       .set('Authorization', sessionStorage.getItem('access_token'))
@@ -144,12 +144,12 @@ var ApiHelper = {
         if(err){
           console.log(err);
         }else{
-          that.user = res.body;
-          that.user.logged = true;
-          that.trigger(that.user);
-          sessionStorage.setItem('access_token', that.user.access_token);
+          caller.user = res.body;
+          caller.user.logged = true;
+          caller.trigger(caller.user);
+          sessionStorage.setItem('access_token', caller.user.access_token);
         }
-      }.bind(that));
+      }.bind(caller));
   }
 
 };
