@@ -49,14 +49,17 @@ var ApiHelper = {
       }.bind(caller));
   },
 
-  fetchGroup: function (groupId, caller) {
+  fetchGroup: function (groupId) {
     request
       .get(ENDPOINTS.fetchGroup + '/groups/' + groupId)
       .set('Authorization', sessionStorage.getItem('access_token'))
       .end(function (err, res) {
-        caller.item = res.body;
-        caller.trigger(caller.item);
-      }.bind(caller));
+        if(err){
+          console.log(err);
+        }else{
+          GroupActions.fetch.completed(res.body)
+        }
+      });
   },
 
   createGroup: function (params, caller) {
@@ -102,7 +105,7 @@ var ApiHelper = {
           res.discussion = res.body;
           DiscussionsActions.create.completed();
           // DiscussionsActions.load();
-          GroupActions.load(params["discutable_id"]);
+          GroupActions.fetch(params["discutable_id"]);
           console.log(params["discutable_id"]);
         }
       }.bind(caller));

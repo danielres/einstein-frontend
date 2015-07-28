@@ -19,20 +19,20 @@ var Discussion = require('../discussions/discussion');
 
 
 var Container = React.createClass({
-  mixins: [Reflux.connect(GroupStore, "item")],
+  mixins: [Reflux.connect(GroupStore, "group")],
   contextTypes: {
     router: React.PropTypes.func
   },
   componentWillMount: function () {
     var groupId = this.context.router.getCurrentParams().groupId;
-    GroupActions.load(groupId);
+    GroupActions.fetch(groupId);
   },
   componentWillReceiveProps: function () {
     var groupId = this.context.router.getCurrentParams().groupId;
-    GroupActions.load(groupId);
+    GroupActions.fetch(groupId);
   },
   render: function() {
-    var group = this.state.item;
+    var group = this.state.group;
     var discussionId = this.context.router.getCurrentParams().discussionId;
 
     return(
