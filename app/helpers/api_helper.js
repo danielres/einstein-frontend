@@ -62,7 +62,7 @@ var ApiHelper = {
       });
   },
 
-  createGroup: function (params, caller) {
+  createGroup: function (params) {
     request
       .post(ENDPOINTS.createGroup + '/groups/')
       .send(params)
@@ -72,11 +72,9 @@ var ApiHelper = {
         if(err){
           GroupsActions.create.failed(res.body);
         }else{
-          res.group = res.body;
           GroupsActions.create.completed();
-          GroupsActions.load();
         }
-      }.bind(caller));
+      });
   },
 
   fetchGroupDiscussion: function (groupId, discussionId, caller) {

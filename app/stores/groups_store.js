@@ -11,8 +11,7 @@ module.exports = Reflux.createStore({
   listenables: [GroupsActions],
 
   getInitialState: function () {
-    this.list = [];
-    return this.list;
+    return [];
   },
 
   onLoad: function () {
@@ -20,7 +19,11 @@ module.exports = Reflux.createStore({
   },
 
   onCreate: function (params) {
-    ApiHelper.createGroup(params, this);
+    ApiHelper.createGroup(params);
+  },
+
+  onCreateCompleted: function() {
+    this.onLoad();
   },
 
 });
