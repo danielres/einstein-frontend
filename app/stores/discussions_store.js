@@ -1,10 +1,10 @@
 'use strict';
 
-var Reflux  = require('reflux')
-var DiscussionsActions = require('actions/discussions_actions')
-var GroupActions = require('actions/group_actions')
+var Reflux  = require('reflux');
+var DiscussionsActions = require('actions/discussions_actions');
+var GroupActions = require('actions/group_actions');
 
-var ApiHelper = require('helpers/api_helper')
+var ApiHelper = require('helpers/api_helper');
 
 
 module.exports = Reflux.createStore({
@@ -16,7 +16,7 @@ module.exports = Reflux.createStore({
   },
 
   onCreateCompleted: function (result) {
-    if(result.discutable_type == "Group"){
+    if(result.discutable_type === 'Group'){
       GroupActions.fetch(result.discutable_id);
     }
   },

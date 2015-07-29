@@ -1,19 +1,19 @@
 'use strict';
 
-var React  = require('react')
+var React = require('react');
 
-var B  = require('react-bootstrap')
+var B = require('react-bootstrap');
 
-var GroupsDashboard = require('components/groups/groups_dashboard')
-var GroupsList = require('components/groups/groups_list')
-var GroupsMenu = require('components/groups/groups_menu')
-var Group      = require('components/groups/group')
+var GroupsDashboard = require('components/groups/groups_dashboard');
+var GroupsList = require('components/groups/groups_list');
+var GroupsMenu = require('components/groups/groups_menu');
+var Group = require('components/groups/group');
 
 
 var Groups = React.createClass({
-  contextTypes: {
-    router: React.PropTypes.func
-  },
+  displayName:  'Groups',
+  contextTypes: { router: React.PropTypes.func },
+
   render: function() {
     var groupId = this.context.router.getCurrentParams().groupId;
 
@@ -30,8 +30,6 @@ var Groups = React.createClass({
     );
   }
 });
-
-
 
 
 module.exports = Groups;

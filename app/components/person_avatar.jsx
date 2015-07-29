@@ -1,17 +1,28 @@
 'use strict';
 
 var React = require('react');
-var Link  = require('react-router').Link
+var Link  = require('react-router').Link;
 
 
 var PersonAvatar = React.createClass({
+  displayName: 'PersonAvatar',
+
   render: function(){
     var person = this.props.person;
     var size   = this.props.size || 50;
 
-    return(
-      <Link to="person" params={{personId: person.id}}>
-        <img src={person.avatar} className="img-circle" width={size} alt={person.name + ' avatar'} title={person.name} />
+    return (
+      <Link
+        params={{personId: person.id}}
+        to="person"
+      >
+        <img
+          alt={person.name + ' avatar'}
+          className="img-circle"
+          src={person.avatar}
+          title={person.name}
+          width={size}
+        />
       </Link>
     );
   }

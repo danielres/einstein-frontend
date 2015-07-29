@@ -1,24 +1,25 @@
 'use strict';
 
-var React = require('react')
-var B    = require('react-bootstrap')
-var _    = require('lodash')
+var React = require('react');
+var B = require('react-bootstrap');
+var _ = require('lodash');
 
-var GroupsActions = require('actions/groups_actions')
+var GroupsActions = require('actions/groups_actions');
 
 
 var GroupsMenu = React.createClass({
+  displayName: 'GroupsMenu',
+
   render: function() {
     return (
       <div style={{textAlign: 'right', marginBottom: '20' }}>
-
         <B.ModalTrigger modal={<CreateGroupModal />}>
-          <B.Button bsSize=''><B.Glyphicon glyph='plus'   /></B.Button>
+          <B.Button bsSize=''><B.Glyphicon glyph="plus"   /></B.Button>
         </B.ModalTrigger>
         &nbsp;
         &nbsp;
         <B.ModalTrigger modal={<FindGroupModal />}>
-          <B.Button bsSize=''><B.Glyphicon glyph='search' /></B.Button>
+          <B.Button bsSize=''><B.Glyphicon glyph="search" /></B.Button>
         </B.ModalTrigger>
       </div>
     );
@@ -27,16 +28,19 @@ var GroupsMenu = React.createClass({
 
 
 var FindGroupModal = React.createClass({
+    displayName: 'FindGroupModal',
+
     render: function () {
     return (
       <B.Modal {...this.props} animation={true}>
-        <div className='modal-body'>
-              <B.Input
-                type='text'
-                placeholder='Find a group'
-                addonAfter={<B.Glyphicon glyph='search' />} />
+        <div className="modal-body">
+          <B.Input
+            addonAfter={<B.Glyphicon glyph="search" />}
+            placeholder="Find a group"
+            type="text"
+          />
         </div>
-        <div className='modal-footer'>
+        <div className="modal-footer">
           <B.Button >Close</B.Button>
         </div>
       </B.Modal>
@@ -46,29 +50,34 @@ var FindGroupModal = React.createClass({
 
 
 var FormErrorsComponent = React.createClass({
-  render: function () {
+  displayName: 'FormErrorsComponent',
+
+  render: function() {
     var errors = _.map(
-      this.props.errors, function(messages,key){
-        return  <div>
-                  <strong>{_.capitalize(key)}:</strong>
-                  <ul>
-                    {
-                      _.map(messages, function(m){
-                        return <li>{m}</li>
-                      })
-                    }
-                  </ul>
-                </div>
+      this.props.errors, function(messages, key){
+        return (
+          <div>
+            <strong>{_.capitalize(key)}:</strong>
+            <ul>
+              {
+                _.map(messages, function(m){
+                  return (<li>{m}</li>);
+                })
+              }
+            </ul>
+          </div>
+        );
       }
     );
     return (
-        <div>{ _.size(this.props.errors) != 0 && <B.Alert bsStyle='warning'>{errors}</B.Alert> }</div>
+      <div>{ _.size(this.props.errors) !== 0 && <B.Alert bsStyle="warning">{errors}</B.Alert> }</div>
     );
   }
 });
 
 
 var CreateGroupModal = React.createClass({
+  displayName: 'CreateGroupModal',
 
   getInitialState: function(){
     return { errors: {} };
@@ -77,22 +86,24 @@ var CreateGroupModal = React.createClass({
   handleSubmit: function(e){
     e.preventDefault();
     var params = {
-             name: this.refs.name.getValue(),
-      description: this.refs.description.getValue()
+      name:        this.refs.name.getValue(),
+      description: this.refs.description.getValue(),
     };
-    GroupsActions.create(params)
+    GroupsActions.create(params);
     this.handleSubmitResult();
   },
 
   handleSubmitResult: function(){
     var that = this;
-    GroupsActions.create
+    GroupsActions
+      .create
       .completed
       .listen(function() {
         that.props.onHide();
-      })
+      });
 
-    GroupsActions.create
+    GroupsActions
+      .create
       .failed
       .listen(function(errors) {
         that.setState({ errors: errors });
@@ -102,22 +113,24 @@ var CreateGroupModal = React.createClass({
   render: function () {
     return (
       <B.Modal {...this.props}>
-        <form className='form-horizontal'onSubmit={this.handleSubmit}>
+        <form className="form-horizontal"onSubmit={this.handleSubmit}>
           <B.Modal.Header closeButton onHide={this.props.onHide}>Create a group </B.Modal.Header>
           <B.Modal.Body>
             <FormErrorsComponent errors={this.state.errors} />
             <B.Input
-              type='text'
-              label='Name of the group'
-              ref='name'
+              label="Name of the group"
               labelClassName='col-xs-4'
-              wrapperClassName='col-xs-7' />
+              ref="name"
+              type="text"
+              wrapperClassName='col-xs-7'
+            />
             <B.Input
-              type='text'
-              label='Description'
-              ref='description'
-              labelClassName='col-xs-4'
-              wrapperClassName='col-xs-7' />
+              label="Description"
+              labelClassName="col-xs-4"
+              ref="description"
+              type="text"
+              wrapperClassName="col-xs-7"
+            />
           </B.Modal.Body>
           <B.Modal.Footer>
             <B.Button type="submit">Submit</B.Button>

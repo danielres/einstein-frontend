@@ -3,7 +3,8 @@
 var Reflux  = require('reflux');
 
 var DiscussionActions = Reflux.createActions([
-  "load",
+  'load',
 ]);
+
 
 module.exports = DiscussionActions;

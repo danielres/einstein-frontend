@@ -1,20 +1,18 @@
 'use strict';
 
-var React = require('react')
+var React = require('react');
 
-var B  = require('react-bootstrap')
-var RB = require('react-router-bootstrap')
+var B  = require('react-bootstrap');
+var RB = require('react-router-bootstrap');
 
-var Intl              = require('intl')
 var ReactIntl         = require('react-intl');
 var IntlMixin         = ReactIntl.IntlMixin;
 var FormattedMessage  = ReactIntl.FormattedMessage;
-var FormattedRelative = ReactIntl.FormattedRelative;
 
 var SessionActions = require('actions/session_actions');
 
 var intlData = {
-  locales : ['en-US'],
+  locales:  ['en-US'],
   messages: {
     dashboard:       'Dashboard',
     groups:          'My groups',
@@ -30,11 +28,12 @@ var intlData = {
 };
 
 var NavBar = React.createClass({
-  mixins: [IntlMixin],
+  displayName: 'NavBar',
+  mixins:      [IntlMixin],
 
   render: function() {
     var user = this.props.user;
-    return(
+    return (
       <B.Navbar toggleNavKey={0}>
         <B.CollapsibleNav eventKey={0}>
           <B.Nav navbar>
@@ -73,19 +72,28 @@ var NavBar = React.createClass({
                 <FormattedMessage message={ this.getIntlMessage('logout') } />
               </B.MenuItem>
             </B.DropdownButton>
-            <B.DropdownButton noCaret eventKey={3} title={<B.Glyphicon glyph='bell'><B.Badge style={{background: "red", position: "absolute", marginTop: "-17px", marginLeft: "-8px", fontSize: '0.7em'}}>15</B.Badge></B.Glyphicon>}>
+
+            <B.DropdownButton eventKey={3} noCaret
+              title={
+                <B.Glyphicon glyph='bell'>
+                  <B.Badge style={{ background: 'red', position: 'absolute', marginTop: '-17px', marginLeft: '-8px', fontSize: '0.7em' }}>
+                    15
+                  </B.Badge>
+                </B.Glyphicon>
+              }
+            >
               { [1, 2, 3, 4, 5, 6, 7, 8].map(function(i){
                 return (
-                  <RB.MenuItemLink to="dashboard"  disabled>
+                  <RB.MenuItemLink disabled to="dashboard">
                     Notification {i}
                     <br/>
                     <small><FormattedMessage message="Notification contents" /></small>
                   </RB.MenuItemLink>
-                )
+                );
               })}
-                <B.MenuItem style={{textAlign: 'right'}}>
-                  <B.Glyphicon style={{ margin: "15px 0"}}  glyph='option-horizontal' />
-                </B.MenuItem>
+              <B.MenuItem style={{textAlign: 'right'}}>
+                <B.Glyphicon glyph='option-horizontal'style={{ margin: '15px 0'}} />
+              </B.MenuItem>
             </B.DropdownButton>
 
           </B.Nav>
@@ -98,7 +106,7 @@ var NavBar = React.createClass({
 
 module.exports = React.createClass({
   render: function(){
-    return(<NavBar {...intlData} user={this.props.user} />);
+    return (<NavBar {...intlData} user={this.props.user} />);
   }
 });
 

@@ -1,9 +1,9 @@
 'use strict';
 
-var Reflux  = require('reflux')
-var GroupActions = require('actions/group_actions')
+var Reflux  = require('reflux');
+var GroupActions = require('actions/group_actions');
 
-var ApiHelper = require('helpers/api_helper')
+var ApiHelper = require('helpers/api_helper');
 
 
 module.exports = Reflux.createStore({
@@ -15,7 +15,7 @@ module.exports = Reflux.createStore({
   },
 
   onFetch: function (groupId) {
-    ApiHelper.fetchGroup(groupId)
+    ApiHelper.fetchGroup(groupId);
   },
 
   onFetchCompleted: function(result){

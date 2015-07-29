@@ -1,12 +1,13 @@
 'use strict';
 
-var React = require('react')
-var B  = require('react-bootstrap')
+var React = require('react');
+var B  = require('react-bootstrap');
 
 var SessionActions = require('actions/session_actions');
 
 
 var LoginFormComponent = React.createClass({
+  displayName: 'LoginFormComponent',
 
   handleSubmit: function(e){
     e.preventDefault();
@@ -19,32 +20,35 @@ var LoginFormComponent = React.createClass({
   render: function() {
     return (
       <form
+        className="form-horizontal"
+        onSubmit={this.handleSubmit}
         style={{ marginTop: 60 }}
-        className='form-horizontal'
-        onSubmit={this.handleSubmit}>
-      <B.Input
-        type='text'
-        defaultValue='example@example.com'
-        label='Email'
-        ref='username'
-        labelClassName='col-xs-2 col-md-offset-2'
-        wrapperClassName='col-xs-4' />
-      <B.Input
-        type='password'
-        defaultValue='password'
-        label='Password'
-        ref='password'
-        labelClassName='col-xs-2 col-md-offset-2'
-        wrapperClassName='col-xs-4' />
-      <B.Input
-        type='submit'
-        label=' '
-        labelClassName='col-xs-2  col-md-offset-2'
-        wrapperClassName='col-xs-4' />
+      >
+        <B.Input
+          defaultValue="example@example.com"
+          label="Email"
+          labelClassName="col-xs-2 col-md-offset-2"
+          ref="username"
+          type="text"
+          wrapperClassName="col-xs-4"
+        />
+        <B.Input
+          defaultValue="password"
+          label="Password"
+          labelClassName="col-xs-2 col-md-offset-2"
+          ref="password"
+          type="password"
+          wrapperClassName="col-xs-4"
+        />
+        <B.Input
+          label=" "
+          labelClassName="col-xs-2  col-md-offset-2"
+          type="submit"
+          wrapperClassName="col-xs-4"
+        />
       </form>
     );
   }
-
 });
 
 

@@ -1,22 +1,22 @@
 'use strict';
 
-var React = require('react')
-var Reflux = require('reflux')
+var React = require('react');
+var Reflux = require('reflux');
 
-var PersonActions = require('actions/person_actions')
-var PersonStore   = require('stores/person_store')
+var PersonActions = require('actions/person_actions');
+var PersonStore   = require('stores/person_store');
 
-var Meta   = require('components/meta')
+var Meta   = require('components/meta');
 
-var B  = require('react-bootstrap')
+var B  = require('react-bootstrap');
 
-var faker = require("faker");
+var faker = require('faker');
 
 var Person = React.createClass({
-  mixins: [Reflux.connect(PersonStore, "item")],
-  contextTypes: {
-    router: React.PropTypes.func
-  },
+  displayName:  'Person',
+  contextTypes: { router: React.PropTypes.func },
+  mixins:       [ Reflux.connect(PersonStore, 'item') ],
+
   componentDidMount: function () {
     var personId = this.props.id || this.context.router.getCurrentParams().personId;
     PersonActions.load(personId);
@@ -25,22 +25,27 @@ var Person = React.createClass({
     var p = this.state.item;
     var menu = this.props.is_current_user ? <CurrentUserMenu /> : <OtherUserMenu />;
 
-    return(
+    return (
       <div>
         <B.Row>
           <B.Col md={3}>
             <p className="text-center">
-              <img src={p.avatar} className="img-circle" alt={p.name + ' avatar'} title={p.name} />
+              <img
+                alt={p.name + ' avatar'}
+                className="img-circle"
+                src={p.avatar}
+                title={p.name}
+              />
             </p>
             <br />
             {menu}
           </B.Col>
           <B.Col md={9}>
             <B.PageHeader>{p.name}</B.PageHeader>
-            { [1, 2, 3, 4, 5].map(function(i){
+            { [1, 2, 3, 4, 5].map(function(){
               return (
                 <Publication />
-              )
+              );
             })}
           </B.Col>
         </B.Row>
@@ -51,8 +56,10 @@ var Person = React.createClass({
 });
 
 var CurrentUserMenu = React.createClass({
+  displayName: 'CurrentUserMenu',
+
   render: function() {
-    return(
+    return (
       <B.ListGroup>
         <B.ListGroupItem href='#'><B.Glyphicon glyph="edit" /> Edit</B.ListGroupItem>
       </B.ListGroup>
@@ -61,8 +68,10 @@ var CurrentUserMenu = React.createClass({
 });
 
 var OtherUserMenu = React.createClass({
+  displayName: 'OtherUserMenu',
+
   render: function() {
-    return(
+    return (
       <B.ListGroup>
         <B.ListGroupItem href='#'><B.Glyphicon glyph="star-empty" /> Follow</B.ListGroupItem>
         <B.ListGroupItem href='#'><B.Glyphicon glyph="comment" />  Private message</B.ListGroupItem>
@@ -72,9 +81,11 @@ var OtherUserMenu = React.createClass({
 });
 
 var Publication = React.createClass({
+  displayName: 'Publication',
+
   render: function() {
     var content = faker.lorem.sentences(faker.random.number({min: 1, max: 8}));
-    return(
+    return (
       <div>
         { content }
         <Meta follow reply repost />

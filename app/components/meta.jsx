@@ -1,13 +1,15 @@
 'use strict';
 
-var React = require('react')
+var React = require('react');
 
-var B  = require('react-bootstrap')
+var B = require('react-bootstrap');
 
 
 var Meta = React.createClass({
+  displayName: 'Meta',
+
   render: function() {
-    return(
+    return (
       <div>
         <small className="text-muted">
           {2} days

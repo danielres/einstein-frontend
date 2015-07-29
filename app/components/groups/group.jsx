@@ -1,16 +1,12 @@
 'use strict';
 
-var React = require('react')
-var Reflux = require('reflux')
+var React = require('react');
+var Reflux = require('reflux');
 
-var GroupActions = require('actions/group_actions')
-var GroupStore   = require('stores/group_store')
+var GroupActions = require('actions/group_actions');
+var GroupStore   = require('stores/group_store');
 
-var Meta   = require('components/meta')
-
-var B  = require('react-bootstrap')
-
-var faker = require("faker");
+var B  = require('react-bootstrap');
 
 var PersonAvatar = require('components/person_avatar');
 var DiscussionsMenu = require('components/discussions/discussions_menu');
@@ -19,36 +15,45 @@ var Discussion = require('components/discussions/discussion');
 
 
 var Container = React.createClass({
-  mixins: [Reflux.connect(GroupStore, "group")],
+  displayName:  'Group Container',
   contextTypes: {
     router: React.PropTypes.func
   },
+  mixins: [ Reflux.connect( GroupStore, 'group') ],
+
   componentWillMount: function () {
     var groupId = this.context.router.getCurrentParams().groupId;
     GroupActions.fetch(groupId);
   },
+
   componentWillReceiveProps: function () {
     var groupId = this.context.router.getCurrentParams().groupId;
     GroupActions.fetch(groupId);
   },
+
   render: function() {
     var group = this.state.group;
     var discussionId = this.context.router.getCurrentParams().discussionId;
 
-    return(
-      <Group group={group} discussionId={discussionId} />
+    return (
+      <Group
+        group={group}
+        discussionId={discussionId}
+      />
     );
   }
 });
 
 
 var Group = React.createClass({
+  displayName: 'Group',
+
   render: function() {
     var group = this.props.group;
-    var owner = group.owner;
     var discussions = group.discussions;
     var discussionId = this.props.discussionId;
-    return(
+
+    return (
       <div>
         <B.Row >
           <B.Col md={12}>
@@ -66,13 +71,13 @@ var Group = React.createClass({
                 <br />
 
                 <p className="text-muted">Members</p>
-                <ul className="list-inline" style={{ padding: "0 30px 0 0" }}>
+                <ul className="list-inline" style={{ padding: '0 30px 0 0' }}>
                   { group.members && group.members.map(function(member){
-                    return(
-                      <li style={{ marginBottom: "10px"}}>
+                    return (
+                      <li style={{ marginBottom: '10px'}}>
                         <PersonAvatar person={member} size={40} />
                       </li>
-                    )
+                    );
                   })}
                 </ul>
               </B.Col>
@@ -94,6 +99,8 @@ var Group = React.createClass({
 });
 
 var GroupDashboard = React.createClass({
+  displayName: 'Group Dashboard',
+
   render: function() {
     return (
       <div>

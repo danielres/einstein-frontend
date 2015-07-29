@@ -1,9 +1,9 @@
 'use strict';
 
-var Reflux  = require('reflux')
-var SessionActions = require('actions/session_actions')
+var Reflux  = require('reflux');
+var SessionActions = require('actions/session_actions');
 
-var ApiHelper = require('helpers/api_helper')
+var ApiHelper = require('helpers/api_helper');
 
 
 module.exports = Reflux.createStore({
@@ -27,9 +27,7 @@ module.exports = Reflux.createStore({
   },
 
   onAccess: function () {
-    var access_token = sessionStorage.getItem('access_token');
     ApiHelper.access(this);
-    return this.user;
   },
 
   onAccessCompleted: function (result) {
