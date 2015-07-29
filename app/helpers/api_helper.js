@@ -1,10 +1,10 @@
 'use strict';
 
 var request = require('superagent');
-var GroupsActions = require('../actions/groups_actions');
-var DiscussionsActions = require('../actions/discussions_actions');
-var GroupActions = require('../actions/group_actions');
-var SessionActions = require('../actions/session_actions');
+var GroupsActions = require('actions/groups_actions');
+var DiscussionsActions = require('actions/discussions_actions');
+var GroupActions = require('actions/group_actions');
+var SessionActions = require('actions/session_actions');
 
 var FAKE_API_URL = window.location.href.includes(":8080/") ? 'http://localhost:3001' : '/api/fake';
 var REAL_API_URL = 'http://localhost:3000';

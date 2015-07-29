@@ -4,7 +4,7 @@ var React = require('react')
 var B    = require('react-bootstrap')
 var _    = require('lodash')
 
-var GroupsActions = require('../../actions/groups_actions')
+var GroupsActions = require('actions/groups_actions')
 
 
 var GroupsMenu = React.createClass({

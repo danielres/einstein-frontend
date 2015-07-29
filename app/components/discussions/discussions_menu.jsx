@@ -4,8 +4,8 @@ var React = require('react')
 var B    = require('react-bootstrap')
 var _    = require('lodash')
 
-var DiscussionsActions = require('../../actions/discussions_actions')
-var DiscussionsStore   = require('../../stores/discussions_store')
+var DiscussionsActions = require('actions/discussions_actions')
+var DiscussionsStore   = require('stores/discussions_store')
 
 
 var DiscussionsMenu = React.createClass({

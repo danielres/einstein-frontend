@@ -3,10 +3,10 @@
 var React = require('react')
 var Reflux = require('reflux')
 
-var PersonActions = require('../actions/person_actions')
-var PersonStore   = require('../stores/person_store')
+var PersonActions = require('actions/person_actions')
+var PersonStore   = require('stores/person_store')
 
-var Meta   = require('./meta')
+var Meta   = require('components/meta')
 
 var B  = require('react-bootstrap')
 

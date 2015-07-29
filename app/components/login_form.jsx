@@ -3,7 +3,7 @@
 var React = require('react')
 var B  = require('react-bootstrap')
 
-var SessionActions = require('../actions/session_actions');
+var SessionActions = require('actions/session_actions');
 
 
 var LoginFormComponent = React.createClass({

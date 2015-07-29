@@ -5,11 +5,11 @@ var Reflux = require('reflux');
 
 var B = require('react-bootstrap')
 
-var DiscussionActions = require('../../actions/discussion_actions');
-var DiscussionStore   = require('../../stores/discussion_store');
+var DiscussionActions = require('actions/discussion_actions');
+var DiscussionStore   = require('stores/discussion_store');
 
-var PersonAvatar = require('../person_avatar');
-var Meta = require('../meta');
+var PersonAvatar = require('components/person_avatar');
+var Meta = require('components/meta');
 
 
 var DiscussionLoader = React.createClass({

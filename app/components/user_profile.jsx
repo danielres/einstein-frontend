@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react')
-var Person         = require('./person');
+var Person         = require('components/person');
 
 var UserProfile = React.createClass({
   render: function(){

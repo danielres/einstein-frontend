@@ -1,10 +1,10 @@
 'use strict';
 
 var Reflux  = require('reflux')
-var DiscussionsActions = require('../actions/discussions_actions')
-var GroupActions = require('../actions/group_actions')
+var DiscussionsActions = require('actions/discussions_actions')
+var GroupActions = require('actions/group_actions')
 
-var ApiHelper = require('../helpers/api_helper')
+var ApiHelper = require('helpers/api_helper')
 
 
 module.exports = Reflux.createStore({

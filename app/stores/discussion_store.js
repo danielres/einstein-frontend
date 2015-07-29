@@ -2,8 +2,8 @@
 
 var Reflux  = require('reflux');
 
-var DiscussionActions = require('../actions/discussion_actions');
-var ApiHelper = require('../helpers/api_helper');
+var DiscussionActions = require('actions/discussion_actions');
+var ApiHelper = require('helpers/api_helper');
 
 
 module.exports = Reflux.createStore({

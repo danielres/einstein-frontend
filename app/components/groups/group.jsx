@@ -3,19 +3,19 @@
 var React = require('react')
 var Reflux = require('reflux')
 
-var GroupActions = require('../../actions/group_actions')
-var GroupStore   = require('../../stores/group_store')
+var GroupActions = require('actions/group_actions')
+var GroupStore   = require('stores/group_store')
 
-var Meta   = require('../meta')
+var Meta   = require('components/meta')
 
 var B  = require('react-bootstrap')
 
 var faker = require("faker");
 
-var PersonAvatar = require('../person_avatar');
-var DiscussionsMenu = require('../discussions/discussions_menu');
-var DiscussionsList = require('../discussions/discussions_list');
-var Discussion = require('../discussions/discussion');
+var PersonAvatar = require('components/person_avatar');
+var DiscussionsMenu = require('components/discussions/discussions_menu');
+var DiscussionsList = require('components/discussions/discussions_list');
+var Discussion = require('components/discussions/discussion');
 
 
 var Container = React.createClass({

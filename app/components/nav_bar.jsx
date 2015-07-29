@@ -11,7 +11,7 @@ var IntlMixin         = ReactIntl.IntlMixin;
 var FormattedMessage  = ReactIntl.FormattedMessage;
 var FormattedRelative = ReactIntl.FormattedRelative;
 
-var SessionActions = require('../actions/session_actions');
+var SessionActions = require('actions/session_actions');
 
 var intlData = {
   locales : ['en-US'],
