@@ -1,3 +1,5 @@
+var  path = require('path');
+
 module.exports = {
   entry: [
     './app/main.jsx',
@@ -9,10 +11,16 @@ module.exports = {
     './node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf'
   ],
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    alias: {
+      helpers:    path.join(__dirname, 'app', 'helpers'),
+      stores:     path.join(__dirname, 'app', 'stores'),
+      actions:    path.join(__dirname, 'app', 'actions'),
+      components: path.join(__dirname, 'app', 'components'),
+    }
   },
   output: {
-    path: './build',
+    path:     './build',
     filename: 'bundle.js'
   },
   module: {
