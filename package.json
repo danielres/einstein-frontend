@@ -47,7 +47,6 @@
     "bootstrap": "^3.3.5",
     "classnames": "^1.2.0",
     "express": "^4.12.4",
-    "intl": "^1.0.0",
     "jsx-loader": "^0.13.1",
     "react": "^0.13.2",
     "react-bootstrap": "^0.23.0",
