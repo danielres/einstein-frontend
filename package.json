@@ -40,7 +40,6 @@
     "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
-    "react-tools": "^0.13.2",
     "reflux": "^0.2.7",
     "lodash": "^3.10.0",
     "bootstrap": "^3.3.5",
