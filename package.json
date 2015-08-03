@@ -22,7 +22,6 @@
     "eslint-plugin-react": "^3.1.0",
     "expect": "^1.8.0",
     "file-loader": "^0.8.4",
-    "jsdom": "^3.1.2",
     "json-server": "^0.7.1",
     "karma": "^0.13.3",
     "karma-chrome-launcher": "^0.2.0",
