@@ -6,22 +6,23 @@ var webpackConfig = {
   module: {
     loaders: require('./webpack.config.js').module.loaders
   },
-  resolve: require('./webpack.config.js').resolve
+  resolve: require('./webpack.config.js').resolve,
+  watch: true
 };
 
 
 module.exports = function (config) {
   config.set({
     browsers: ['Chrome' ],
-    autoWatch: true,
     frameworks: [ 'mocha' ],
     files: [
-      'tests.webpack.js'
+      { pattern: 'tests.webpack.js', watched: false },
     ],
     preprocessors: {
       'tests.webpack.js': [ 'webpack' ]
     },
     reporters: [ 'spec' ],
+    singleRun: false,
     webpack: webpackConfig,
     webpackServer: {
       noInfo: true

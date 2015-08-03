@@ -18,9 +18,21 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.jsx$/, loader: 'jsx-loader' },
-      { test: /\.css$/, loader: 'file-loader?name=css/[name].[ext]' },
-      { test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/, loader: 'file-loader?name=fonts/[name].[ext]' }
+      {
+        test: /\.jsx$/,
+        exclude: /(node_modules|api|bin|build)/,
+        loader: 'babel-loader?cacheDirectory'
+      },
+      {
+        test: /\.css$/,
+        // exclude: /(app|api|bin|build)/,
+        loader: 'file-loader?name=css/[name].[ext]'
+      },
+      {
+        test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/,
+        // exclude: /(app|api|bin|build)/,
+        loader: 'file-loader?name=fonts/[name].[ext]'
+      }
     ]
   }
 };
