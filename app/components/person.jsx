@@ -10,8 +10,6 @@ var Meta   = require('components/meta');
 
 var B  = require('react-bootstrap');
 
-var faker = require('faker');
-
 var Person = React.createClass({
   displayName:  'Person',
   contextTypes: { router: React.PropTypes.func },
@@ -84,7 +82,7 @@ var Publication = React.createClass({
   displayName: 'Publication',
 
   render: function() {
-    var content = faker.lorem.sentences(faker.random.number({min: 1, max: 8}));
+    var content = "Lorem Ipsum"
     return (
       <div>
         { content }
