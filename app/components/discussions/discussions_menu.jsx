@@ -91,14 +91,14 @@ var CreateDiscussionModal = React.createClass({
     DiscussionsActions.create
       .completed
       .listen(function() {
-        that.props.onHide();
+        that.close();
       })
 
     DiscussionsActions.create
       .failed
       .listen(function(errors) {
         that.setState({ errors: errors });
-      }).bind(this);
+      });
   },
 
   render: function () {
