@@ -1,23 +1,23 @@
 'use strict';
 
-var React = require('react')
+var React = require('react');
 
-var B     = require('react-bootstrap')
+var B     = require('react-bootstrap');
 
 var Router       = require('react-router')
   , RouteHandler = Router.RouteHandler
   , DefaultRoute = Router.DefaultRoute
-  , Route        = Router.Route
+  , Route        = Router.Route;
 
-var LoginForm   = require('components/login_form')
-var NavBar      = require('components/nav_bar')
-var Dashboard   = require('components/dashboard')
-var Placeholder = require('components/placeholder')
-var Inbox       = require('components/inbox')
-var Groups      = require('components/groups')
-var Discussion  = require('components/discussions/discussion')
-var Person      = require('components/person')
-var UserProfile = require('components/user_profile')
+var LoginForm   = require('components/login_form');
+var NavBar      = require('components/nav_bar');
+var Dashboard   = require('components/dashboard');
+var Placeholder = require('components/placeholder');
+var Inbox       = require('components/inbox');
+var Groups      = require('components/groups');
+var Discussion  = require('components/discussions/discussion');
+var Person      = require('components/person');
+var UserProfile = require('components/user_profile');
 
 var Reflux = require('reflux');
 var SessionStore   = require('stores/session_store');
@@ -25,7 +25,9 @@ var SessionActions = require('actions/session_actions');
 
 
 var App = React.createClass({
-  mixins: [Reflux.connect(SessionStore, "user")],
+  displayName: 'App',
+
+  mixins: [Reflux.connect(SessionStore, 'user')],
 
   componentWillMount: function(){
     SessionActions.access();
