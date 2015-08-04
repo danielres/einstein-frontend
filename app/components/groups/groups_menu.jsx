@@ -13,14 +13,9 @@ var GroupsMenu = React.createClass({
   render: function() {
     return (
       <div style={{textAlign: 'right', marginBottom: '20' }}>
-        <B.ModalTrigger modal={<CreateGroupModal />}>
-          <B.Button bsSize=''><B.Glyphicon glyph="plus"   /></B.Button>
-        </B.ModalTrigger>
-        &nbsp;
-        &nbsp;
-        <B.ModalTrigger modal={<FindGroupModal />}>
-          <B.Button bsSize=''><B.Glyphicon glyph="search" /></B.Button>
-        </B.ModalTrigger>
+        <CreateGroupModal />
+        &nbsp; &nbsp;
+        <FindGroupModal />
       </div>
     );
   }
@@ -30,20 +25,46 @@ var GroupsMenu = React.createClass({
 var FindGroupModal = React.createClass({
     displayName: 'FindGroupModal',
 
+    getInitialState: function(){
+      return ({ showModal: false });
+    },
+
+    close: function(){
+      this.setState({ showModal: false });
+    },
+
+    open: function(){
+      this.setState({ showModal: true });
+    },
+
     render: function () {
     return (
-      <B.Modal {...this.props} animation={true}>
-        <div className="modal-body">
-          <B.Input
-            addonAfter={<B.Glyphicon glyph="search" />}
-            placeholder="Find a group"
-            type="text"
-          />
-        </div>
-        <div className="modal-footer">
-          <B.Button >Close</B.Button>
-        </div>
-      </B.Modal>
+      <span>
+        <B.Button onClick={this.open}>
+          <B.Glyphicon glyph="search" />
+        </B.Button>
+
+        <B.Modal
+          onHide={this.close}
+          show={this.state.showModal}
+        >
+          <B.Modal.Header
+            closeButton
+            onHide={this.close}
+          >
+            <B.Modal.Title>Find groups</B.Modal.Title>
+          </B.Modal.Header>
+          <B.Modal.Body>
+            <B.Input
+              addonAfter={<B.Glyphicon glyph="search" />}
+              placeholder="Find a group"
+              type="text"
+            />
+          </B.Modal.Body>
+          <B.Modal.Footer>
+          </B.Modal.Footer>
+        </B.Modal>
+      </span>
     );
   }
 });
@@ -70,7 +91,12 @@ var FormErrorsComponent = React.createClass({
       }
     );
     return (
-      <div>{ _.size(this.props.errors) !== 0 && <B.Alert bsStyle="warning">{errors}</B.Alert> }</div>
+      <div>
+        {
+          _.size(this.props.errors) !== 0 &&
+            <B.Alert bsStyle="warning">{errors}</B.Alert>
+        }
+      </div>
     );
   }
 });
@@ -80,7 +106,18 @@ var CreateGroupModal = React.createClass({
   displayName: 'CreateGroupModal',
 
   getInitialState: function(){
-    return { errors: {} };
+    return ({
+        errors:    {},
+        showModal: false,
+    });
+  },
+
+  close: function(){
+    this.setState({ showModal: false });
+  },
+
+  open: function(){
+    this.setState({ showModal: true });
   },
 
   handleSubmit: function(e){
@@ -99,7 +136,7 @@ var CreateGroupModal = React.createClass({
       .create
       .completed
       .listen(function() {
-        that.props.onHide();
+        that.close();
       });
 
     GroupsActions
@@ -112,31 +149,45 @@ var CreateGroupModal = React.createClass({
 
   render: function () {
     return (
-      <B.Modal {...this.props}>
-        <form className="form-horizontal"onSubmit={this.handleSubmit}>
-          <B.Modal.Header closeButton onHide={this.props.onHide}>Create a group </B.Modal.Header>
-          <B.Modal.Body>
-            <FormErrorsComponent errors={this.state.errors} />
-            <B.Input
-              label="Name of the group"
-              labelClassName='col-xs-4'
-              ref="name"
-              type="text"
-              wrapperClassName='col-xs-7'
-            />
-            <B.Input
-              label="Description"
-              labelClassName="col-xs-4"
-              ref="description"
-              type="text"
-              wrapperClassName="col-xs-7"
-            />
-          </B.Modal.Body>
-          <B.Modal.Footer>
-            <B.Button type="submit">Submit</B.Button>
-          </B.Modal.Footer>
-        </form>
-      </B.Modal>
+      <span>
+        <B.Button onClick={this.open}>
+          <B.Glyphicon glyph="plus" />
+        </B.Button>
+
+        <B.Modal
+          onHide={this.close}
+          show={this.state.showModal}
+        >
+          <form className="form-horizontal"onSubmit={this.handleSubmit}>
+            <B.Modal.Header
+              closeButton
+              onHide={this.close}
+            >
+              <B.Modal.Title>Create a group</B.Modal.Title>
+            </B.Modal.Header>
+            <B.Modal.Body>
+              <FormErrorsComponent errors={this.state.errors} />
+              <B.Input
+                label="Name of the group"
+                labelClassName='col-xs-4'
+                ref="name"
+                type="text"
+                wrapperClassName='col-xs-7'
+              />
+              <B.Input
+                label="Description"
+                labelClassName="col-xs-4"
+                ref="description"
+                type="text"
+                wrapperClassName="col-xs-7"
+              />
+            </B.Modal.Body>
+            <B.Modal.Footer>
+              <B.Button type="submit">Submit</B.Button>
+            </B.Modal.Footer>
+          </form>
+        </B.Modal>
+      </span>
     );
   }
 });
