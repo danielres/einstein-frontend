@@ -3,3 +3,4 @@ build/bundle.js
 *.sublime-project
 *.sublime-workspace
 npm-debug.log
+logs/
