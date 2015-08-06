@@ -21,20 +21,20 @@ var ENDPOINTS = {
     FAKE_API_URL,
     // REAL_API_URL,
   fetchGroup:
-    // SUPPORT REMOVED IN FAKE API,
-    REAL_API_URL + '/api/v1',
+    FAKE_API_URL,
+    // REAL_API_URL + '/api/v1',
   fetchGroups:
-    // SUPPORT REMOVED IN FAKE API,
-    REAL_API_URL + '/api/v1',
+    FAKE_API_URL,
+    // REAL_API_URL + '/api/v1',
   createGroup:
-    // SUPPORT REMOVED IN FAKE API,
-    REAL_API_URL + '/api/v1',
+    FAKE_API_URL,
+    // REAL_API_URL + '/api/v1',
   createDiscussion:
-    // SUPPORT NOT AVAILABLE IN FAKE API,
-    REAL_API_URL + '/api/v1',
+    FAKE_API_URL,
+    // REAL_API_URL + '/api/v1',
   fetchGroupDiscussion:
-    // SUPPORT REMOVED IN FAKE API,
-    REAL_API_URL + '/api/v1',
+    FAKE_API_URL,
+    // REAL_API_URL + '/api/v1',
   fetchPerson:
     FAKE_API_URL,
 };
