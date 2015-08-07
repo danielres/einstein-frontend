@@ -106,8 +106,9 @@ var CreateDiscussionModal = React.createClass({
       <div>
         <B.Button bsSize='small' onClick={this.open} >
           <B.Glyphicon
-            bsSize='small'
-            glyph='plus'
+            data-ref="adding-a-discussion-button"
+            bsSize="small"
+            glyph="plus"
           />
         </B.Button>
 
@@ -128,11 +129,12 @@ var CreateDiscussionModal = React.createClass({
             <B.Modal.Body>
               <FormErrorsComponent errors={this.state.errors} />
               <B.Input
-                label='Title of the discussion'
-                labelClassName='col-xs-4'
+                data-ref="adding-a-discussion-input-title"
+                label="Title of the discussion"
+                labelClassName="col-xs-4"
                 ref='title'
                 type='text'
-                wrapperClassName='col-xs-7'
+                wrapperClassName="col-xs-7"
               />
             </B.Modal.Body>
             <B.Modal.Footer>

@@ -13,7 +13,10 @@ var DiscussionsList = React.createClass({
     var discussions = this.props.discussions;
     var currentGroupId = this.context.router.getCurrentParams().groupId;
     return(
-      <ul className="nav nav-muted">
+      <ul
+        className="nav nav-muted"
+        data-ref="discussions-list"
+      >
         { discussions && _.map(discussions, function(discussion, i){
           return(
             <RB.ListGroupItemLink
