@@ -37,7 +37,7 @@ function fakeDiscussionsGenerator(amount) {
 };
 
 var people = fakePeopleGenerator(50);
-var discussions = fakeDiscussionsGenerator(50);
+var discussions = fakeDiscussionsGenerator(3);
 
 
 var peopleSets = [
@@ -84,7 +84,7 @@ module.exports = function(){
                 description: faker.company.catchPhrase(),
                 owner: peopleSets[n][0],
                 members: peopleSets[n],
-                discussions: discussionsSets[n],
+                discussions: discussions,
             }
         }),
         discussions: discussions
