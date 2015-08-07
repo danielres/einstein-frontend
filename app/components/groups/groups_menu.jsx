@@ -150,7 +150,10 @@ var CreateGroupModal = React.createClass({
   render: function () {
     return (
       <span>
-        <B.Button onClick={this.open}>
+        <B.Button
+          data-ref="adding-a-group-button"
+          onClick={this.open}
+        >
           <B.Glyphicon glyph="plus" />
         </B.Button>
 
@@ -158,7 +161,10 @@ var CreateGroupModal = React.createClass({
           onHide={this.close}
           show={this.state.showModal}
         >
-          <form className="form-horizontal"onSubmit={this.handleSubmit}>
+          <form
+            className="form-horizontal"
+            onSubmit={this.handleSubmit}
+          >
             <B.Modal.Header
               closeButton
               onHide={this.close}
@@ -168,6 +174,7 @@ var CreateGroupModal = React.createClass({
             <B.Modal.Body>
               <FormErrorsComponent errors={this.state.errors} />
               <B.Input
+                data-ref="adding-a-group-input-name"
                 label="Name of the group"
                 labelClassName='col-xs-4'
                 ref="name"
@@ -176,6 +183,7 @@ var CreateGroupModal = React.createClass({
               />
               <B.Input
                 label="Description"
+                data-ref="adding-a-group-input-description"
                 labelClassName="col-xs-4"
                 ref="description"
                 type="text"

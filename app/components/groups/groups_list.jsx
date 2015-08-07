@@ -32,7 +32,7 @@ var GroupsList = React.createClass({
 
   render: function () {
     return (
-      <div>
+      <div data-ref="groups-list">
         { this.props.groups.map(function(group, i){
           var headerText = group.name;
           return (
