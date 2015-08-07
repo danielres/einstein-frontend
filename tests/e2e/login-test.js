@@ -5,7 +5,6 @@ module.exports = {
       .assert.elementPresent('form')
       .click('input[type=submit]')
       .waitForElementVisible('.navbar', 1000)
-      .click('.navbar a[href="#/groups"]')
       .assert.containsText('.container', 'Dashboard')
       .end();
   }
