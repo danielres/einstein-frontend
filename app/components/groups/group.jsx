@@ -22,24 +22,20 @@ var Container = React.createClass({
   mixins: [ Reflux.connect( GroupStore, 'group') ],
 
   componentWillMount: function () {
-    var groupId = this.context.router.getCurrentParams().groupId;
-    GroupActions.fetch(groupId);
+    GroupActions.fetch(
+      this.context.router.getCurrentParams().groupId
+    );
   },
 
   componentWillReceiveProps: function () {
-    var groupId = this.context.router.getCurrentParams().groupId;
-    GroupActions.fetch(groupId);
+    GroupActions.fetch(
+      this.context.router.getCurrentParams().groupId
+    );
   },
 
   render: function() {
-    var group = this.state.group;
-    var discussionId = this.context.router.getCurrentParams().discussionId;
-
     return (
-      <Group
-        group={group}
-        discussionId={discussionId}
-      />
+      <Group group={this.state.group} />
     );
   }
 });
@@ -50,9 +46,7 @@ var Group = React.createClass({
 
   render: function() {
     var group = this.props.group;
-    var discussions = group.discussions;
-    var discussionId = this.props.discussionId;
-
+    var groupId = group.id;
     return (
       <div>
         <B.Row >
@@ -64,8 +58,15 @@ var Group = React.createClass({
 
             <B.Row >
               <B.Col md={3}>
-                <DiscussionsMenu discutable_type="Group" discutable_id={group.id} />
-                <DiscussionsList discussions={discussions} />
+                <DiscussionsMenu
+                  discutable_id={groupId}
+                  discutable_type="Group"
+                />
+                <DiscussionsList
+                  discutable_id={groupId}
+                  discutable_type="Group"
+                  key={groupId}
+                />
                 <br />
                 <br />
                 <br />
@@ -83,10 +84,9 @@ var Group = React.createClass({
               </B.Col>
 
               <B.Col md={9}>
-                { discussionId ?
-                  <Discussion groupId={group.id} discussionId={discussionId} />
-                  : <GroupDashboard />
-                }
+                <Discussion
+                  ifEmpty={<GroupDashboard />}
+                />
               </B.Col>
             </B.Row>
 

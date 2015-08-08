@@ -98,7 +98,6 @@ module.exports = function(){
         description: faker.company.catchPhrase(),
         owner:       peopleSets[n][0],
         members:     peopleSets[n],
-        discussions: discussions,
       }
     }),
 

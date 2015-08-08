@@ -14,7 +14,9 @@ module.exports = Reflux.createStore({
   },
 
   onLoad: function (discussionId) {
-    ApiHelper.fetchDiscussion(discussionId, this);
+    if(discussionId !== undefined){
+      ApiHelper.fetchDiscussion(discussionId, this);
+    }
   }
 });
 

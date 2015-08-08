@@ -11,14 +11,25 @@ module.exports = Reflux.createStore({
 
   listenables: [DiscussionsActions],
 
+  getInitialState: function () {
+    return [];
+  },
+
+  onFetch: function (discutable_type, discutable_id) {
+    ApiHelper.fetchDiscussions(discutable_type, discutable_id);
+  },
+
+  onFetchCompleted: function (result) {
+    this.trigger(result);
+  },
+
+
   onCreate: function (params) {
     ApiHelper.createDiscussion(params);
   },
 
   onCreateCompleted: function (result) {
-    if(result.discutable_type === 'Group'){
-      GroupActions.fetch(result.discutable_id);
-    }
+    DiscussionsActions.fetch(result.discutable_type, result.discutable_id);
   },
 
 });

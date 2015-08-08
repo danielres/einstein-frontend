@@ -14,14 +14,23 @@ var Meta = require('components/meta');
 
 var DiscussionLoader = React.createClass({
   displayName: 'DiscussionLoader',
-  mixins:      [Reflux.connect(DiscussionStore, 'discussion')],
+
+  contextTypes: { router: React.PropTypes.func },
+  mixins:       [ Reflux.connect(DiscussionStore, 'discussion') ],
+
 
   componentWillReceiveProps: function () {
-    DiscussionActions.load(this.props.discussionId);
+    var discussionId = this.context.router.getCurrentParams().discussionId;
+    DiscussionActions.load(discussionId);
   },
 
   render: function() {
-    return (<Discussion discussion={this.state.discussion} />);
+    var discussionId = this.context.router.getCurrentParams().discussionId;
+    return (
+      discussionId ?
+        <Discussion discussion={this.state.discussion} />
+        : this.props.ifEmpty
+    );
   }
 });
 

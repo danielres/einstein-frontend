@@ -28,6 +28,9 @@ var ENDPOINTS = {
   createDiscussion:
     FAKE_API_URL,
     // REAL_API_URL + '/api/v1',
+  fetchDiscussions:
+    FAKE_API_URL,
+    // REAL_API_URL + '/api/v1',
   fetchDiscussion:
     FAKE_API_URL,
     // REAL_API_URL + '/api/v1',
@@ -46,6 +49,21 @@ var ApiHelper = {
           console.log(err);
         }else{
           GroupsActions.fetch.completed(res.body);
+        }
+      });
+  },
+
+  fetchDiscussions: function (discutable_type, discutable_id) {
+    request
+      .get(ENDPOINTS.fetchDiscussions + '/discussions')
+      .set('Authorization', sessionStorage.getItem('access_token'))
+      .query({discutable_type: discutable_type })
+      .query({discutable_id: discutable_id })
+      .end(function (err, res) {
+        if(err){
+          console.log(err);
+        }else{
+          DiscussionsActions.fetch.completed(res.body);
         }
       });
   },
