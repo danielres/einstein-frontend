@@ -24,12 +24,6 @@ server.post('/login', function(req, res){
   };
 });
 
-
-server.use(jsonServer.rewriter({
-  '/groups/:groupId/discussions':     '/discussions',
-  '/groups/:groupId/discussions/:id': '/discussions/:id',
-}))
-
 server.use(jsonServer.defaults);
 server.use(jsonServer.router(faker));
 

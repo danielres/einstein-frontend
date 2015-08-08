@@ -13,8 +13,8 @@ module.exports = Reflux.createStore({
     return {};
   },
 
-  onLoad: function (groupId, discussionId) {
-    ApiHelper.fetchGroupDiscussion(groupId, discussionId, this);
+  onLoad: function (discussionId) {
+    ApiHelper.fetchDiscussion(discussionId, this);
   }
 });
 

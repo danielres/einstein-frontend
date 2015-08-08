@@ -9,10 +9,6 @@ var SessionActions = require('actions/session_actions');
 var FAKE_API_URL = window.location.href.includes(':8080/') ? 'http://localhost:3001' : '/api/fake';
 var REAL_API_URL = 'http://localhost:3000';
 
-function urlize(type){
-  return { 'Group': 'groups' }[type];
-}
-
 var ENDPOINTS = {
   signIn:
     FAKE_API_URL,
@@ -32,7 +28,7 @@ var ENDPOINTS = {
   createDiscussion:
     FAKE_API_URL,
     // REAL_API_URL + '/api/v1',
-  fetchGroupDiscussion:
+  fetchDiscussion:
     FAKE_API_URL,
     // REAL_API_URL + '/api/v1',
   fetchPerson:
@@ -89,12 +85,10 @@ var ApiHelper = {
       });
   },
 
-  fetchGroupDiscussion: function (groupId, discussionId, caller) {
+  fetchDiscussion: function (discussionId, caller) {
     request
       .get(
-        ENDPOINTS.fetchGroupDiscussion
-        + '/groups/'
-        + groupId
+        ENDPOINTS.fetchDiscussion
         + '/discussions/'
         + discussionId
       )
@@ -109,8 +103,6 @@ var ApiHelper = {
     request
       .post(
         ENDPOINTS.createDiscussion
-        + '/' + urlize(params.discutable_type)
-        + '/' + params.discutable_id
         + '/discussions/'
       )
       .send(params)

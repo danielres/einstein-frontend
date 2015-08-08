@@ -17,7 +17,7 @@ var DiscussionLoader = React.createClass({
   mixins:      [Reflux.connect(DiscussionStore, 'discussion')],
 
   componentWillReceiveProps: function () {
-    DiscussionActions.load(this.props.groupId, this.props.discussionId);
+    DiscussionActions.load(this.props.discussionId);
   },
 
   render: function() {
