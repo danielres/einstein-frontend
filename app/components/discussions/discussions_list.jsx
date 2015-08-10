@@ -45,8 +45,10 @@ var DiscussionsList = React.createClass({
         data-ref="discussions-list"
       >
         { discussions && _.map(discussions, function(discussion, i){
+          var data_ref = 'discussion_' + discussion.id;
           return(
             <RB.ListGroupItemLink
+              data-ref={ data_ref }
               to="discussion"
               key={i}
               params={{discussionId: discussion.id, groupId: currentGroupId}}>

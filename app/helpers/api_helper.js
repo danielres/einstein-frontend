@@ -3,6 +3,7 @@
 var request = require('superagent');
 var GroupsActions = require('actions/groups_actions');
 var DiscussionsActions = require('actions/discussions_actions');
+var DiscussionEntriesActions = require('actions/discussion_entries_actions');
 var GroupActions = require('actions/group_actions');
 var SessionActions = require('actions/session_actions');
 
@@ -32,6 +33,9 @@ var ENDPOINTS = {
     FAKE_API_URL,
     // REAL_API_URL + '/api/v1',
   fetchDiscussion:
+    FAKE_API_URL,
+    // REAL_API_URL + '/api/v1',
+  fetchDiscussionEntries:
     FAKE_API_URL,
     // REAL_API_URL + '/api/v1',
   fetchPerson:
@@ -64,6 +68,20 @@ var ApiHelper = {
           console.log(err);
         }else{
           DiscussionsActions.fetch.completed(res.body);
+        }
+      });
+  },
+
+  fetchDiscussionEntries: function (discussion_id) {
+    request
+      .get(ENDPOINTS.fetchDiscussionEntries + '/discussion_entries')
+      .set('Authorization', sessionStorage.getItem('access_token'))
+      .query({discussion_id: discussion_id })
+      .end(function (err, res) {
+        if(err){
+          console.log(err);
+        }else{
+          DiscussionEntriesActions.fetch.completed(res.body);
         }
       });
   },
