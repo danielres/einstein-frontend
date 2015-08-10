@@ -20,7 +20,10 @@ module.exports = {
 
 
   'Viewing groups: viewing the added group in groups list': function(browser){
-    browser.pause(200);
+    browser
+      .useXpath()
+      .waitForElementPresent("//*[text()='" + random_group_name + "']", 1000)
+      .useCss();
 
     browser
       .expect
@@ -50,7 +53,9 @@ module.exports = {
 
   'Viewing group discussions: viewing the added discussion in the group discussions list': function(browser){
     browser
-      .pause(500)
+      .useXpath()
+      .waitForElementPresent("//*[text()='" + random_discussion_title + "']", 1000)
+      .useCss()
       .expect
       .element('[data-ref=discussions-list]').text
       .to.contain(random_discussion_title);
