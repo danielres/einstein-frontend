@@ -61,11 +61,18 @@ module.exports = {
       .to.contain(random_discussion_title);
   },
 
+
   'Selecting the discussion in discussions list': function(browser){
     browser
-      .click('xpath', "//*[text()='" + random_discussion_title + "']")
-      .end();
+      .click('xpath', "//*[text()='" + random_discussion_title + "']");
   },
 
 
+  'Viewing a group discussion with its entries': function(browser){
+    // Improve this once "Adding discussion entries" is implemented:
+    browser
+      .url('http://127.0.0.1:8080/#/groups/0/discussions/0')
+      .waitForElementPresent('[data-ref=discussion_entry_0]', 10000)
+      .end();
+  },
 };
