@@ -1,8 +1,9 @@
 var login = require('./support/login-helper.js');
 
-var random_group_name        = 'Group '       + Math.random();
-var random_group_description = 'Description ' + Math.random();
-var random_discussion_title  = 'Title '       + Math.random();
+var random_group_name             = 'Group '       + Math.random();
+var random_group_description      = 'Description ' + Math.random();
+var random_discussion_title       = 'Title '       + Math.random();
+var random_discussion_entry_body  = 'Body '        + Math.random();
 
 
 module.exports = {
@@ -65,6 +66,13 @@ module.exports = {
   'Selecting the discussion in discussions list': function(browser){
     browser
       .click('xpath', "//*[text()='" + random_discussion_title + "']");
+  },
+
+
+  'Adding a discussion entry to the selected discussion': function(browser){
+    browser
+      .sendKeys('[data-ref=discussion-entry-body]', random_discussion_entry_body)
+      .click('button[type=submit]')
   },
 
 
