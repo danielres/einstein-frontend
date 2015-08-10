@@ -28,20 +28,18 @@ function fakeDiscussionsGenerator(amount, discutable_type, discutable_id) {
       author:  people[n],
       discutable_type: 'Group',
       discutable_id: 0,
-      entries: [
-        {
-          id:      1,
-          author:  people[1],
-          body:    faker.lorem.sentences(),
-          entries: [
-            { id: 11, author: people[6], body: faker.lorem.sentences() }
-          ],
-        },
-        { id: 2, discutable_type: 'Group', discutable_id: 0, author: people[2], body: faker.lorem.sentences() },
-        { id: 3, discutable_type: 'Group', discutable_id: 1, author: people[3], body: faker.lorem.sentences() },
-        { id: 4, discutable_type: 'Group', discutable_id: 2, author: people[4], body: faker.lorem.sentences() },
-        { id: 5, discutable_type: 'Group', discutable_id: 3, author: people[5], body: faker.lorem.sentences() },
-      ],
+    }
+  })
+};
+
+
+function fakeDiscussionEntriesGenerator(amount) {
+  return _.times(amount, function (n) {
+    return {
+      id:            n,
+      author:        people[n],
+      discussion_id: 0,
+      body:          faker.lorem.sentences(),
     }
   })
 };
@@ -51,6 +49,9 @@ var people = fakePeopleGenerator(50);
 
 
 var discussions = fakeDiscussionsGenerator(3);
+
+
+var discussionEntries = fakeDiscussionEntriesGenerator(5);
 
 
 var peopleSets = [
@@ -104,5 +105,8 @@ module.exports = function(){
     }),
 
     discussions: discussions,
+
+    discussion_entries: discussionEntries,
+
   });
 }();
