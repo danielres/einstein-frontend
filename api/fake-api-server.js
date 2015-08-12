@@ -1,28 +1,28 @@
+'use strict';
+
 var jsonServer = require('json-server');
 var server     = require('express')();
-var faker      = require('./faker.js');
 var bodyParser = require('body-parser');
 
+var faker      = require('./faker.js');
+var demoUser   = require('./demo_user');
 
 server.use(bodyParser.json());
 
 server.post('/login', function(req, res){
   if(req.body.username || req.headers.authorization){
     res
-      .header('Access-Control-Allow-Origin', '*')
-      .header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-      .header('Access-Control-Allow-Headers', 'Content-Type')
-      .status(200)
-      .json({
-        id:           1,
-        email:        'testuser@fake.com',
-        created_at:   '2015-04-17T14:43:01.461Z',
-        updated_at:   '2015-07-05T12:00:14.648Z',
-        access_token: '1:GHX7XT5oJv4KK8Do2Wiq',
-        username:     'Test User',
-        avatar:       'https://s3.amazonaws.com/uifaces/faces/twitter/igorgarybaldi/128.jpg',
-    })
+    .header('Access-Control-Allow-Origin', '*')
+    .header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    .header('Access-Control-Allow-Headers', 'Content-Type')
+    .status(200)
+    .json(demoUser)
   };
+});
+
+server.post('/discussion_entries', function(req, res, next){
+  req.body.author = demoUser;
+  next();
 });
 
 server.use(jsonServer.defaults);
