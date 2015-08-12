@@ -27,7 +27,7 @@ function fakeDiscussionsGenerator(amount, discutable_type, discutable_id) {
       title:   faker.company.catchPhrase(),
       author:  people[n],
       discutable_type: 'Group',
-      discutable_id: 0,
+      discutable_id: 7,
     }
   })
 };
@@ -38,7 +38,7 @@ function fakeDiscussionEntriesGenerator(amount) {
     return {
       id:            n,
       author:        people[n],
-      discussion_id: 0,
+      discussion_id: 2,
       body:          faker.lorem.sentences(),
     }
   })

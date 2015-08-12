@@ -19,7 +19,7 @@ module.exports = Reflux.createStore({
   },
 
   onFetchCompleted: function (result) {
-    this.trigger(result);
+    this.trigger(result.reverse());
   },
 
   onCreate: function (params) {
