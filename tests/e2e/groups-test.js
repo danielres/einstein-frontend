@@ -63,7 +63,7 @@ module.exports = {
   },
 
 
-  'Selecting the discussion in discussions list': function(browser){
+  'Selecting the discussion in the discussions list': function(browser){
     browser
       .click('xpath', "//*[text()='" + random_discussion_title + "']");
   },
@@ -71,16 +71,20 @@ module.exports = {
 
   'Adding a discussion entry to the selected discussion': function(browser){
     browser
-      .sendKeys('[data-ref=discussion-entry-body]', random_discussion_entry_body)
+      .sendKeys('[data-ref=adding-a-discussion-entry-input-body]', random_discussion_entry_body)
       .click('button[type=submit]')
   },
 
 
-  'Viewing a group discussion with its entries': function(browser){
-    // Improve this once "Adding discussion entries" is implemented:
+  'Viewing group discussion entries: viewing the added discussion entry': function(browser){
     browser
-      .url('http://127.0.0.1:8080/#/groups/0/discussions/0')
-      .waitForElementPresent('[data-ref=discussion_entry_0]', 10000)
-      .end();
+      .useXpath()
+      .waitForElementPresent("//*[text()='" + random_discussion_entry_body + "']", 1000)
+      .useCss()
+      .expect
+      .element('[data-ref=discussions-entries-list]').text
+      .to.contain(random_discussion_entry_body);
+    browser.end();
   },
+
 };

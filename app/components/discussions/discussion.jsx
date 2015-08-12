@@ -8,7 +8,8 @@ var B = require('react-bootstrap');
 var DiscussionActions = require('actions/discussion_actions');
 var DiscussionStore   = require('stores/discussion_store');
 
-var DiscussionEntriesList = require('components/discussions/discussion_entries/discussion_entries_list')
+var DiscussionEntriesList = require('components/discussions/discussion_entries/discussion_entries_list');
+var DiscussionEntryForm   = require('./discussion_entries/form');
 
 var PersonAvatar = require('components/person_avatar');
 var Meta = require('components/meta');
@@ -19,7 +20,6 @@ var DiscussionLoader = React.createClass({
 
   contextTypes: { router: React.PropTypes.func },
   mixins:       [ Reflux.connect(DiscussionStore, 'discussion') ],
-
 
   componentWillReceiveProps: function () {
     var discussionId = this.context.router.getCurrentParams().discussionId;
@@ -49,6 +49,11 @@ var Discussion = React.createClass({
         <div className="text-right">
           <Meta follow={true} />
         </div>
+
+        <DiscussionEntryForm
+          discussionId={discussionId}
+        />
+
         <DiscussionEntriesList
           discussionId={discussionId}
           key={discussionId}

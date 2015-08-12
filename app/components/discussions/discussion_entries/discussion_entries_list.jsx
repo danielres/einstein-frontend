@@ -24,7 +24,9 @@ var DiscussionEntriesListContainer = React.createClass({
     var discussionEntries = this.state.list;
 
     return (
-      <div>
+      <div
+        data-ref="discussions-entries-list"
+      >
         { discussionEntries && discussionEntries.map(function(entry, i){
           return (
             <Entry

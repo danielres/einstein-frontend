@@ -35,6 +35,9 @@ var ENDPOINTS = {
   fetchDiscussion:
     FAKE_API_URL,
     // REAL_API_URL + '/api/v1',
+  createDiscussionEntry:
+    FAKE_API_URL,
+    // REAL_API_URL + '/api/v1',
   fetchDiscussionEntries:
     FAKE_API_URL,
     // REAL_API_URL + '/api/v1',
@@ -68,6 +71,24 @@ var ApiHelper = {
           console.log(err);
         }else{
           DiscussionsActions.fetch.completed(res.body);
+        }
+      });
+  },
+
+  createDiscussionEntry: function (params) {
+    request
+      .post(
+        ENDPOINTS.createDiscussionEntry
+        + '/discussion_entries/'
+      )
+      .send(params)
+      .set('Accept', 'application/json')
+      .set('Authorization', sessionStorage.getItem('access_token'))
+      .end(function(err, res){
+        if(err){
+          DiscussionEntriesActions.create.failed(res.body);
+        }else{
+          DiscussionEntriesActions.create.completed(params.discussion_id);
         }
       });
   },

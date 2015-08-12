@@ -21,4 +21,12 @@ module.exports = Reflux.createStore({
     this.trigger(result);
   },
 
+  onCreate: function (params) {
+    ApiHelper.createDiscussionEntry(params);
+  },
+
+  onCreateCompleted: function(discussionId) {
+    this.onFetch(discussionId);
+  },
+
 });
