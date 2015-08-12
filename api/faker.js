@@ -4,6 +4,9 @@ var _ = require('lodash');
 var faker = require('faker');
 
 
+var FAKE_API_URL = require('../project_settings').FAKE_API_URL;
+
+
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
@@ -14,7 +17,7 @@ function fakePeopleGenerator(amount) {
     return {
       id:     n,
       name:   faker.name.findName(),
-      avatar: faker.internet.avatar()
+      avatar: FAKE_API_URL + '/avatars/128/' + n +'.jpg',
     }
   })
 };
