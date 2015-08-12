@@ -29,17 +29,17 @@ var Person = React.createClass({
           <B.Col md={3}>
             <p className="text-center">
               <img
-                alt={p.name + ' avatar'}
+                alt={p.username + ' avatar'}
                 className="img-circle"
                 src={p.avatar}
-                title={p.name}
+                title={p.username}
               />
             </p>
             <br />
             {menu}
           </B.Col>
           <B.Col md={9}>
-            <B.PageHeader>{p.name}</B.PageHeader>
+            <B.PageHeader>{p.username}</B.PageHeader>
             { [1, 2, 3, 4, 5].map(function(){
               return (
                 <Publication />

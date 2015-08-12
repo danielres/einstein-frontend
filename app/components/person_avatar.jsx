@@ -17,10 +17,10 @@ var PersonAvatar = React.createClass({
         to="person"
       >
         <img
-          alt={person.name + ' avatar'}
+          alt={person.username + ' avatar'}
           className="img-circle"
           src={person.avatar}
-          title={person.name}
+          title={person.username}
           width={size}
         />
       </Link>
