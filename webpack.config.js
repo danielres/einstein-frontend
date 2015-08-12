@@ -1,3 +1,12 @@
+'use strict';
+
+var webpack = require('webpack');
+
+var defineProjectSettings = new webpack.DefinePlugin(
+  {__SETTINGS__: JSON.stringify(require('./project_settings')) }
+);
+
+
 module.exports = {
   entry: [
     './app/main.jsx',
@@ -34,5 +43,7 @@ module.exports = {
         loader: 'file-loader?name=fonts/[name].[ext]'
       }
     ]
-  }
+  },
+
+  plugins: [defineProjectSettings],
 };

@@ -7,7 +7,7 @@ var DiscussionEntriesActions = require('actions/discussion_entries_actions');
 var GroupActions = require('actions/group_actions');
 var SessionActions = require('actions/session_actions');
 
-var FAKE_API_URL = window.location.href.includes(':8080/') ? 'http://localhost:3001' : '/api/fake';
+var FAKE_API_URL = __SETTINGS__.FAKE_API_URL;
 var REAL_API_URL = 'http://localhost:3000';
 
 var ENDPOINTS = {

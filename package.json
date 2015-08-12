@@ -11,8 +11,8 @@
     "test:e2e-headless": "xvfb-run --server-args='-screen 0, 1366x768x24' npm run test:e2e ",
     "build": "./node_modules/.bin/webpack",
     "dev": "npm run dev-server & npm run api-faker",
-    "dev-server": "./node_modules/.bin/webpack-dev-server --devtool eval --progress --colors --content-base build",
-    "api-faker": "node api/fake-api-server.js",
+    "dev-server": "FAKE_API_URL=http://localhost:3001 ./node_modules/.bin/webpack-dev-server --devtool eval --progress --colors --content-base build",
+    "api-faker":  "FAKE_API_URL=http://localhost:3001 node api/fake-api-server.js",
     "lint": "eslint app; eslint tests"
   },
   "author": "",
