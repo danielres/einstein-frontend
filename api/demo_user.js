@@ -1,5 +1,7 @@
 'use strict';
 
+var FAKE_API_URL = require('../project_settings').FAKE_API_URL;
+
 module.exports = {
   id:           1,
   email:        'testuser@fake.com',
@@ -7,5 +9,5 @@ module.exports = {
   updated_at:   '2015-07-05T12:00:14.648Z',
   access_token: '1:GHX7XT5oJv4KK8Do2Wiq',
   username:     'Demo user',
-  avatar:       'https://s3.amazonaws.com/uifaces/faces/twitter/igorgarybaldi/128.jpg',
+  avatar:       FAKE_API_URL + '/avatars/128/1.jpg',
 };
