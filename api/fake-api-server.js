@@ -20,6 +20,7 @@ server.post('/login', function(req, res){
         updated_at:   '2015-07-05T12:00:14.648Z',
         access_token: '1:GHX7XT5oJv4KK8Do2Wiq',
         username:     'Test User',
+        avatar:       'https://s3.amazonaws.com/uifaces/faces/twitter/igorgarybaldi/128.jpg',
     })
   };
 });
