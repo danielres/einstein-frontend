@@ -3,6 +3,7 @@
 var _ = require('lodash');
 var faker = require('faker');
 
+var demoUser = require('./demo_user.js');
 
 var FAKE_API_URL = require('../project_settings').FAKE_API_URL;
 
@@ -49,6 +50,7 @@ function fakeDiscussionEntriesGenerator(amount) {
 
 
 var people = fakePeopleGenerator(50);
+people[1] = demoUser;
 
 
 var discussions = fakeDiscussionsGenerator(3);
