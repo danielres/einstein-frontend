@@ -29,6 +29,7 @@ var DiscussionEntryForm = React.createClass({
   },
 
   handleSubmitResult: function(){
+    this.refs.addingADiscussionEntryForm.getDOMNode().reset();
   },
 
 
@@ -38,6 +39,7 @@ var DiscussionEntryForm = React.createClass({
         <form
           className='form-horizontal'
           onSubmit={this.handleSubmit}
+          ref="addingADiscussionEntryForm"
         >
           <FormErrorsComponent errors={this.state.errors} />
           <B.Input
