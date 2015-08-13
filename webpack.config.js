@@ -29,7 +29,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx$/,
-        exclude: /(node_modules|api|bin|build)/,
+        exclude: /(node_modules|api|bin)/,
         loader: 'babel-loader?cacheDirectory'
       },
       {
