@@ -79,7 +79,7 @@ var NavBar = React.createClass({
           </B.Nav>
           <B.Nav navbar right>
             <B.DropdownButton eventKey={3} title={userAvatarImage}>
-              <RB.MenuItemLink to="profile"  disabled>
+              <RB.MenuItemLink to="profile">
                 <FormattedMessage message={ this.getIntlMessage('profile') } />
               </RB.MenuItemLink>
               <RB.MenuItemLink to="settings" disabled>
