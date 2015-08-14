@@ -17,7 +17,7 @@ function fakePeopleGenerator(amount) {
   return _.times(amount, function (n) {
     return {
       id:     n,
-      name:   faker.name.findName(),
+      username:   faker.name.findName(),
       avatar: FAKE_API_URL + '/avatars/128/' + n +'.jpg',
     }
   })
