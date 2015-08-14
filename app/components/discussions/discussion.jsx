@@ -8,7 +8,7 @@ var B = require('react-bootstrap');
 var DiscussionActions = require('actions/discussion_actions');
 var DiscussionStore   = require('stores/discussion_store');
 
-var DiscussionEntriesList = require('components/discussions/discussion_entries/discussion_entries_list');
+var DiscussionEntriesList = require('components/discussions/discussion_entries/list');
 var DiscussionEntryForm   = require('./discussion_entries/form');
 
 var PersonAvatar = require('components/person_avatar');
