@@ -10,6 +10,7 @@
     "test:e2e": "nightwatch -e chrome",
     "test:e2e-headless": "xvfb-run --server-args='-screen 0, 1366x768x24' npm run test:e2e ",
     "build": "./node_modules/.bin/webpack",
+    "postinstall": "./node_modules/.bin/webpack -p",
     "dev": "npm run dev-server & npm run api-faker",
     "dev-server": "FAKE_API_URL=http://localhost:3001 ./node_modules/.bin/webpack-dev-server --devtool eval --progress --colors --content-base build",
     "api-faker":  "FAKE_API_URL=http://localhost:3001 node api/fake-api-server.js",
