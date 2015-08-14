@@ -6,6 +6,8 @@ var _ = require('lodash');
 
 var GroupsActions = require('actions/groups_actions');
 
+var FormErrorsComponent = require('components/shared/form').Errors;
+
 
 var GroupsMenu = React.createClass({
   displayName: 'GroupsMenu',
@@ -70,36 +72,6 @@ var FindGroupModal = React.createClass({
 });
 
 
-var FormErrorsComponent = React.createClass({
-  displayName: 'FormErrorsComponent',
-
-  render: function() {
-    var errors = _.map(
-      this.props.errors, function(messages, key){
-        return (
-          <div>
-            <strong>{_.capitalize(key)}:</strong>
-            <ul>
-              {
-                _.map(messages, function(m){
-                  return (<li>{m}</li>);
-                })
-              }
-            </ul>
-          </div>
-        );
-      }
-    );
-    return (
-      <div>
-        {
-          _.size(this.props.errors) !== 0 &&
-            <B.Alert bsStyle="warning">{errors}</B.Alert>
-        }
-      </div>
-    );
-  }
-});
 
 
 var CreateGroupModal = React.createClass({

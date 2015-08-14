@@ -6,6 +6,7 @@ var Reflux = require('reflux');
 var B      = require('react-bootstrap');
 
 var DiscussionEntriesActions = require('actions/discussion_entries_actions');
+var FormErrorsComponent = require('components/shared/form').Errors;
 
 
 var DiscussionEntryForm = React.createClass({
@@ -53,38 +54,6 @@ var DiscussionEntryForm = React.createClass({
           <B.Button type="submit">Submit</B.Button>
         </form>
       </div>
-    );
-  }
-});
-
-
-var FormErrorsComponent = React.createClass({
-  displayName: 'FormErrorsComponent',
-
-  render: function () {
-    var errors = _.map(
-      this.props.errors, function(messages, key){
-        return (
-          <div key={key}>
-            <strong>{_.capitalize(key)}:</strong>
-            <ul>
-              {
-                _.map(messages, function(m, i){
-                  return <li key={i}>{m}</li>
-                })
-              }
-            </ul>
-          </div>
-        );
-      }
-    );
-    return (
-        <div>
-          {
-            _.size(this.props.errors) != 0 &&
-            <B.Alert bsStyle='warning'>{errors}</B.Alert>
-          }
-        </div>
     );
   }
 });
