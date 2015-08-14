@@ -21,24 +21,10 @@ var DiscussionEntriesListContainer = React.createClass({
   },
 
   render: function() {
-    var discussionEntries = this.state.list;
-
     return (
-      <div
-        data-ref="discussions-entries-list"
-      >
-        { discussionEntries && discussionEntries.map(function(entry, i){
-          return (
-            <Entry
-              entry={entry}
-              follow={true}
-              key={i}
-              reply={true}
-              repost={true}
-            />
-          );
-        })}
-      </div>
+      <DiscussionEntriesList
+        discussionEntries={this.state.list}
+      />
     );
   }
 });
@@ -48,6 +34,27 @@ var DiscussionEntriesList = React.createClass({
   displayName: 'DiscussionEntriesList',
 
   render: function() {
+    var discussionEntries = this.props.discussionEntries;
+
+    return (
+      <div
+        data-ref="discussions-entries-list"
+      >
+        { discussionEntries &&
+          discussionEntries
+          .map(function(entry,i){
+            return(
+              <Entry
+                entry={entry}
+                follow={true}
+                key={i}
+                reply={true}
+                repost={true}
+              />
+            );
+        })}
+      </div>
+    );
   }
 });
 
