@@ -11,6 +11,8 @@ var FormattedMessage  = ReactIntl.FormattedMessage;
 
 var SessionActions = require('actions/session_actions');
 
+var PersonAvatarImage = require('components/person_avatar').Image;
+
 var intlData = {
   locales:  ['en-US'],
   messages: {
@@ -33,6 +35,22 @@ var NavBar = React.createClass({
 
   render: function() {
     var user = this.props.user;
+
+    var userAvatarImage =
+    <span
+      style={{
+        display: 'inline-block',
+        height: 0,
+        lineHeight: 0,
+        marginTop: '-10',
+      }}
+    >
+      <PersonAvatarImage
+        person={user}
+        size={40}
+      />
+    </span>;
+
     return (
       <B.Navbar toggleNavKey={0}>
         <B.CollapsibleNav eventKey={0}>
@@ -60,7 +78,7 @@ var NavBar = React.createClass({
             </RB.NavItemLink>
           </B.Nav>
           <B.Nav navbar right>
-            <B.DropdownButton eventKey={3} title={ <span><B.Glyphicon glyph='user' /> <b>{user.username}</b></span>}>
+            <B.DropdownButton eventKey={3} title={userAvatarImage}>
               <RB.MenuItemLink to="profile"  disabled>
                 <FormattedMessage message={ this.getIntlMessage('profile') } />
               </RB.MenuItemLink>
